@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastrar — Littera</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/cadastro.css">
+</head>
+<body>
+  <div class="cadastro-page">
+    <header class="cadastro-header">
+      <div class="logo-area">
+        <img src="images/logo-main.webp" alt="Littera logo">
+      </div>
+    </header>
+
+    <main class="cadastro-main">
+      <div class="cadastro-form">
+        <h2>Preencha as informações:</h2>
+        <form id="cadastroForm">
+          <input type="text" placeholder="Nome" required>
+          <input type="text" placeholder="Username" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Senha" required>
+          <input type="password" placeholder="Confirme a Senha" required>
+
+          <label class="termos">
+            <input type="checkbox" required>
+            Aceito os <a href="termos.html">Termos de Serviço</a>
+          </label>
+
+          <button type="submit" class="cta-btn">CRIAR CONTA</button>
+        </form>
+      </div>
+    </main>
+  </div>
+  <script src="scripts/login.js"></script>
+</body>
+</html>
