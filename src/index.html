@@ -1,121 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Littera — Main</title>
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/styles.css">
-</head>
-<body>
-  <header class="main-header">
-    <div class="header-inner">
-      <div class="logo-header">
-        <img src="images/logo-main.webp" alt="Littera logo">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Littera — Main</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-inner">
+        <div class="logo-header">
+          <img src="images/logo-main.webp" alt="Littera logo" />
+        </div>
+        <nav class="top-nav">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Contact us</a>
+          <a href="#popup" class="btn">
+            <img src="images/lupa.webp" alt="lupa" />
+          </a>
+
+          <div id="popup" class="popup">
+            <div class="popup-content">
+              <a href="#" class="fechar">&times;</a>
+              <input type="text" id="texto" placeholder="Escreva um livro" />
+            </div>
+          </div>
+        </nav>
       </div>
-      <nav class="top-nav">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact us</a>
-        <input class="search" type="search" placeholder="">
-      </nav>
+    </header>
+
+    <div class="main-layout">
+      <aside class="sidebar">
+        <ul>
+          <li>
+            <details class="caixa-detalhes">
+              <summary>Configurações da conta</summary>
+              <div class="caixa-conteudo">
+                <p><a href="userArea.html">Editar Perfil</a></p>
+                <p><a href="login.html">Sair</a></p>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="caixa-detalhes">
+              <summary>Area do Cliente</summary>
+              <div class="caixa-conteudo">
+                <p><a href="#">Meus Anuncios</a></p>
+                <p><a href="#">Minhas Ofertas</a></p>
+              </div>
+            </details>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="content-area">
+        <section class="cards-grid">
+          <!-- repetição de cards de exemplo -->
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+          <article class="card">
+            <div class="card-thumb"></div>
+            <h3>Nome do livro</h3>
+            <p class="card-desc">Breve descrição do livro</p>
+            <a class="more" href="#">Mais Informações</a>
+          </article>
+        </section>
+      </main>
     </div>
-  </header>
 
-  <div class="main-layout">
-    <aside class="sidebar">
-      <ul>
-        <li>Configurações da conta</li>
-        <li>Meus Desapegos</li>
-        <li>Minhas Mensagens</li>
-      </ul>
-    </aside>
-
-    <main class="content-area">
-      <section class="cards-grid">
-        <!-- repetição de cards de exemplo -->
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-        <article class="card">
-          <div class="card-thumb"></div>
-          <h3>Nome do livro</h3>
-          <p class="card-desc">Breve descrição do livro</p>
-          <a class="more" href="#">Mais Informações</a>
-        </article>
-      </section>
-    </main>
-  </div>
-
-  <script src="scripts/login.js"></script>
-</body>
+    <script src="scripts/login.js"></script>
+  </body>
 </html>

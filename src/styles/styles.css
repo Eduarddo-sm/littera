@@ -31,9 +31,55 @@
   border: 1px solid #e6e9ec;
 }
 
+.btn img {
+  width: 20px;
+  cursor: pointer
+}
+
+.popup {
+  width: 100%;
+  max-width: 1400px;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255, 255, 255);
+}
+
+.popup:target {
+  display: flex;
+}
+
+.popup-content{
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 250px;
+  text-align: center;
+}
+
+.popup-content input{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.fechar{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #333;
+}
+
 .main-layout {
   width: 100%;
-  max-width: 1200px;
+  padding: 20px 0;
   display: flex;
 }
 
@@ -45,19 +91,56 @@
 }
 
 .sidebar {
-  width: 20%;
-  max-width: 200px;
-  padding: 20px;
+  width: 30%;
+  max-width: 250px;
   border-right: 1px solid #eee;
 }
+
+
 .sidebar ul {
   list-style: none;
 }
 .sidebar li {
-  padding: 18px 0;
   color: #6b7880;
   border-bottom: 1px solid #f0f2f4;
 }
+
+.caixa-detalhes summary {
+  padding: 12px;
+  list-style: none;
+}
+
+.caixa-detalhes summary::after {
+  content: '▶';
+  float: right;
+  transition: transform 0.3s ease;
+}
+
+.caixa-detalhes[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.caixa-detalhes .caixa-conteudo {
+  padding: 30px;
+  background: rgb(237, 237, 237);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.caixa-conteudo a {
+  text-decoration: none;
+  color: gray;
+  transition: all 0.3s ease;
+}
+
+.caixa-conteudo a:hover {
+  color: rgb(94, 94, 94);
+}
+
+
+
 
 .cards-grid {
   display: grid;
@@ -134,7 +217,7 @@
   .sidebar {
     display: none;
   }
-  + .right-panel {
+  .right-panel {
     display: none;
   }
 }
