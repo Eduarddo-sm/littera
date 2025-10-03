@@ -2,7 +2,10 @@ import { defineConfig } from 'vite';
 import path from 'path';
 
 export default defineConfig({
+  // Project root for source files
   root: path.resolve(__dirname, 'src'),
+  // Ensure Vite reads environment files from the repository root (where `.env` is located)
+  envDir: path.resolve(__dirname),
   build: {
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
