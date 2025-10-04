@@ -52,11 +52,14 @@ if (document.readyState === 'loading') {
     loadUserData().catch(err => console.error('Erro ao carregar dados do usuário:', err));
 }
 
-deleteAccountBtn?.addEventListener('click', async (e) =>{
+deleteAccountBtn?.addEventListener('click', async (e) => {
+    e.preventDefault();
+    
     const confirmDelete = confirm("Tem certeza que deseja apagar sua conta? Esta ação é irreversível.");    
-    if(!confirmDelete) return;
-    const {data: {user}} = await supabase.auth.getUser();
-    if(!user) {
+    if (!confirmDelete) return;
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
         alert("Usuário não autenticado.");
         return;
     }
@@ -70,15 +73,13 @@ deleteAccountBtn?.addEventListener('click', async (e) =>{
         return;
     }
 
-
     try {
+        // Determine the base URL for the API call
+        const baseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? `${window.location.protocol}//${window.location.host}` 
+            : `https://${window.location.host}`;
 
-        console.log('DEBUG_DELETE_ACCOUNT_TOKEN:', accessToken);
-    } catch (e) {
-    }
-
-    try {
-        const resp = await fetch('/api/delete-account', {
+        const resp = await fetch(`${baseUrl}/api/delete-account`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,16 +91,19 @@ deleteAccountBtn?.addEventListener('click', async (e) =>{
         if (!resp.ok) {
             const errBody = await resp.json().catch(() => null);
             console.error('Erro ao deletar conta (server):', resp.status, errBody);
-            alert('Erro ao deletar conta. Veja o console para mais detalhes.');
+            alert(`Erro ao deletar conta: ${errBody?.error || 'Erro desconhecido'}. Veja o console para mais detalhes.`);
             return;
         }
 
-        // On success, sign out client and redirect
+        const result = await resp.json();
+        console.log('Conta deletada com sucesso:', result);
+
+        // Sign out and redirect
         await supabase.auth.signOut();
-        window.location.href = '../index.html';
+        alert('Conta deletada com sucesso!');
+        window.location.href = '../../index.html';
     } catch (err) {
         console.error('Erro na requisição de delete-account:', err);
         alert('Erro ao conectar com o servidor para deletar conta. Veja o console para detalhes.');
     }
-
-    })
+});
