@@ -3,8 +3,6 @@ import { supabase } from "../main/supabase";
 const signOutBtn = document.getElementById('signout-btn') as HTMLAnchorElement | null;
 const userArea = document.getElementById('userArea') as HTMLAnchorElement | null;
 
-checkAuth();
-
 export async function authGuard() {
   const { data } = await supabase.auth.getUser();
 
@@ -14,11 +12,3 @@ export async function authGuard() {
   }
 }
 
-async function checkAuth() {
-    const { data } = await supabase.auth.getUser();
-
-    if (data.user){
-        signOutBtn.style.display = "block";
-        userArea.style.display = "block";
-    }
-}

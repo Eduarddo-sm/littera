@@ -12,13 +12,13 @@ header .logo-left img {
 
 .main-layout {
   display: flex;
-  min-height: 100vh;
+  min-height: 100%;
   background: #f9fafb;
+  justify-content: space-around;
 }
 
 .user-sidebar {
   width: 30%;
-  margin: 0 auto;
   padding: 36px 24px;
   display: flex;
   flex-direction: column;
@@ -94,7 +94,11 @@ footer .delete-account {
     color: #e74c3c;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 1024px) {
+  .user-sidebar, .content-area{
+    margin: 0 auto;
+  }
+
     .main-layout {
         flex-direction: column;
     }
