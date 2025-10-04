@@ -6,25 +6,30 @@ async function signIn(email: string, password: string) {
         if (error) {
             console.error('Login error:', error);
             alert(`Erro no login: ${error.message}`);
-            return;
+            return false;
         }
 
         if (data && data.user) {
-            alert('Login realizado com sucesso!');
-            window.location.href = '/index.html';
-        } else {
-            console.warn('Login returned no user data', data);
-            alert('Não foi possível efetuar o login. Tente novamente.');
+            return true;
         }
+
+        console.warn('Login returned no user data', data);
+        alert('Não foi possível efetuar o login. Tente novamente.');
+        return false;
+
     } catch (err) {
         console.error('Unexpected signIn error', err);
         alert('Erro inesperado ao tentar logar. Veja o console para mais detalhes.');
+        return false;
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm') as HTMLFormElement | null;
-    if (!form) return;
+    if (!form) {
+        console.warn('loginForm não encontrado no DOM.');
+        return;
+    }
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -32,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const passwordEl = document.getElementById('password') as HTMLInputElement | null;
         if (!emailEl || !passwordEl) {
             alert('Campos de email ou senha não encontrados na página.');
-            return;
+                    return false;
         }
 
         const email = emailEl.value.trim();
@@ -42,7 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Preencha email e senha antes de enviar.');
             return;
         }
-
-        await signIn(email, password);
+        const ok = await signIn(email, password);
+        if (ok) {
+            alert('Login realizado com sucesso!');
+            window.location.href = '/index.html';
+        }
     });
 });
