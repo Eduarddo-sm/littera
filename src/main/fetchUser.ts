@@ -70,13 +70,6 @@ deleteAccountBtn?.addEventListener('click', async (e) =>{
         return;
     }
 
-
-    try {
-
-        console.log('DEBUG_DELETE_ACCOUNT_TOKEN:', accessToken);
-    } catch (e) {
-    }
-
     try {
         const resp = await fetch('/api/delete-account', {
             method: 'POST',
