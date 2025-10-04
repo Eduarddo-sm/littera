@@ -1,6 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 export default async function handler(req: any, res: any) {
+  // Debug log: report invocation
+  console.log('DELETE-ACCOUNT invoked:', { method: req.method, headers: req.headers });
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const supabaseUrl = process.env.SUPABASE_URL;
