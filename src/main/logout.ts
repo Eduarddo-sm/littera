@@ -1,4 +1,4 @@
-import { supabase } from "../main/supabase";
+import { supabase } from "./supabase";
 
 const signOutBtn = document.getElementById('signout-btn') as HTMLAnchorElement | null;
 const userArea = document.getElementById('userArea') as HTMLAnchorElement | null;

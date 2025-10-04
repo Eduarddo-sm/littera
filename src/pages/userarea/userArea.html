@@ -17,7 +17,7 @@
       <aside class="sidebar user-sidebar">
         <div class="user-panel">
           <div class="user-avatar-large"></div>
-          <h4 class="user-name">Username</h4>
+          <h4 id="user-name" class="user-name">Username</h4>
         </div>
       </aside>
       <main class="content-area user-content">
@@ -25,17 +25,22 @@
           <h2>Informações Pessoais:</h2>
           <div class="field">
             <div class="label">Nome Completo:</div>
-            <div class="value">Nome Completo do usuário</div>
+            <div id="user-fullname" class="user-fullname">Nome Completo do usuário</div>
+          </div>
+
+            <div class="field">
+            <div class="label">Email:</div>
+            <div id="user-email" class="user-email">teste@admin</div>
           </div>
 
           <div class="field">
             <div class="label">Telefone para Contato:</div>
-            <div class="value">+55 (11) 91809-3667</div>
+            <div id="user-phone" class="user-phone">+55 (11) 91809-3667</div>
           </div>
 
           <div class="field">
             <div class="label">Bio:</div>
-            <div class="value bio">
+            <div id="user-bio" class="value bio">
               Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio
               Bio Bio Bio Bio Bio
             </div>
@@ -47,5 +52,7 @@
           </footer>
       </main>
     </div>
+
+    <source type="module" src="../../main/fetchData.ts"></source>
   </body>
 </html>

@@ -45,6 +45,7 @@
 
 .cadastro-form input[type="text"],
 .cadastro-form input[type="email"],
+.cadastro-form input[type="tel"],
 .cadastro-form input[type="password"] {
     padding: 14px;
     border: 1px solid #d6dfe6;
