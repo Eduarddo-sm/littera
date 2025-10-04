@@ -67,7 +67,6 @@
   border-right: 1px solid #eee;
 }
 
-
 .sidebar ul {
   list-style: none;
 }
@@ -110,6 +109,9 @@
   color: rgb(94, 94, 94);
 }
 
+.signout-btn{
+  cursor: pointer;
+}
 
 
 

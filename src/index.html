@@ -6,6 +6,7 @@
     <title>Littera — Main</title>
   <link rel="stylesheet" href="pages/reset.css" />
   <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="shortcut icon" href="./images/logo.webp" type="image/x-icon">
   </head>
   <body>
     <header class="main-header">
@@ -31,8 +32,8 @@
             <details class="caixa-detalhes">
               <summary>Configurações da conta</summary>
               <div class="caixa-conteudo">
-                <p><a href="pages/userarea/userArea.html">Editar Perfil</a></p>
-                <p><a href="pages/login/login.html">Sair</a></p>
+                <p><a id="userArea" href="pages/userarea/userArea.html">Editar Perfil</a></p>
+                <p><a id="signout-btn" class="signout-btn">Sair</a></p>
               </div>
             </details>
           </li>
@@ -134,5 +135,7 @@
     </div>
 
     <script type="module" src="/main/login.ts"></script>
+    <script type="module" src="/main/logout.ts"></script>
+    <script type="module" src="/auth/guard.ts"></script>
   </body>
 </html>
