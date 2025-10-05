@@ -3,13 +3,14 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Livro - Littera</title>
-  <script type="module" crossorigin src="../../assets/livroPagina-BF9z3mvi.js"></script>
-  <link rel="modulepreload" crossorigin href="../../assets/supabase-Djo7mtdQ.js">
-  <link rel="modulepreload" crossorigin href="../../assets/guard-C0W0w-Pp.js">
-  <link rel="modulepreload" crossorigin href="../../assets/fetchUser-CbsS5nHv.js">
-  <link rel="modulepreload" crossorigin href="../../assets/fetchBooks-CWtNXpQh.js">
-  <link rel="stylesheet" crossorigin href="../../assets/livroPagina-CUCG5MWh.css">
+        <title>Livro - Littera</title>
+  <script type="module" crossorigin src="../../assets/livroPagina-CITfUkmq.js"></script>
+  <link rel="modulepreload" crossorigin href="../../assets/supabase-C7rZz57M.js">
+  <link rel="modulepreload" crossorigin href="../../assets/guard-SrXEI54j.js">
+  <link rel="modulepreload" crossorigin href="../../assets/fetchUser-C2NrsevF.js">
+  <link rel="modulepreload" crossorigin href="../../assets/fetchBooks-CMBXDWCD.js">
+  <link rel="stylesheet" crossorigin href="../../assets/supabase-N1HkhQ76.css">
+  <link rel="stylesheet" crossorigin href="../../assets/livroPagina-BdJtmrqj.css">
 </head>
 <body>
         <header class="main-header">
@@ -29,3 +30,25 @@
         </main>
 </body>
 </html>
+
+{
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node@3.0.0"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
