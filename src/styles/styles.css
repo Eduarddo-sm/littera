@@ -117,19 +117,28 @@
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 0.5fr);
   gap: 30px;
   padding: 30px;
   flex: 1;
+  justify-content: center;
 }
+
 .card {
+  width: 90%;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
   background: transparent;
   padding: 8px;
+  border: 1px solid #e1e6ea;
 }
 .card-thumb {
+  width: 70%;
+  height: 70%;
   background: #e9eef5;
-  height: 90px;
   border-radius: 4px;
+  margin: 0 auto;
   margin-bottom: 12px;
 }
 .card h3 {
@@ -141,10 +150,20 @@
   color: #97a1a8;
   margin-bottom: 8px;
 }
+
 .more {
-  color: #333;
-  text-decoration: underline;
+  height: 10%;
+  color: #ffffff;
   font-size: 14px;
+  border-style: none;
+  margin-top: auto;
+  background: rgb(81, 81, 81);
+  transition: all 0.3s ease;
+}
+
+.more:hover {
+  background: rgb(57, 57, 57);
+  cursor: pointer;
 }
 
 .tooltip-box {
@@ -183,10 +202,27 @@
   font-size: 28px;
 }
 
-@media (max-width: 999px) {
-  .cards-grid {
-    grid-template-columns: repeat(1, 1fr);
+@media (max-width: 1024px) {
+  
+
+   .card-thumb {
+    width: 100%;
   }
+
+  
+} 
+
+@media (max-width: 730px) {
+  
+ 
+  .cards-grid {
+    grid-template-columns: repeat(1, 0.8fr);
+  }
+
+   .card-thumb {
+    width: 50%;
+  }
+
   .sidebar {
     display: none;
   }

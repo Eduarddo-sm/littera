@@ -25,6 +25,7 @@ if (form) {
     const autora = (document.getElementById('autora') as HTMLInputElement).value;
     const paginas = parseInt((document.getElementById('paginas') as HTMLInputElement).value, 10);
     const editora = (document.getElementById('editora') as HTMLInputElement).value;
+    const sobre = (document.getElementById('sobre') as HTMLTextAreaElement).value;
     const imagensInput = document.getElementById('imagem') as HTMLInputElement;
     const files = imagensInput.files;
     if (!files || files.length === 0) {
@@ -54,7 +55,9 @@ if (form) {
           autora,
           paginas,
           editora,
+          sobre,
           imagens,
+          
         },
       ]);
       if (insertError) {

@@ -45,7 +45,8 @@
 }
 
 .form-group input[type="text"],
-.form-group input[type="number"] {
+.form-group input[type="number"],
+.form-group textarea {
   padding: 10px;
   border: 1px solid #cbd5e0;
   border-radius: 6px;
@@ -55,8 +56,9 @@
 }
 
 .form-group input[type="text"]:focus,
-.form-group input[type="number"]:focus {
-  border-color: #3182ce;
+.form-group input[type="number"]:focus,
+.form-group textarea:focus {
+  border-color: #313233;
   outline: none;
 }
 
