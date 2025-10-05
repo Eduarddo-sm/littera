@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Livro - Littera</title>
         <link rel="stylesheet" href="livroPagina.css">
+        <link rel="stylesheet" href="../reset.css">
 </head>
 <body>
         <header class="main-header">
@@ -28,3 +29,25 @@
         <script type="module" src="../../main/livroPagina.ts"></script>
 </body>
 </html>
+
+{
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node@3.0.0"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

@@ -39,7 +39,7 @@ function createBookCard(livro: Livro) {
   button.className = "more"
   button.textContent = 'Ver mais';
     button.addEventListener('click', () => {
-      window.location.href = `../livro/livroPagina.html?id=${livro.id}`;
+      window.location.href = `../pages/livro/livroPagina.html?id=${livro.id}`;
     });
 
   card.appendChild(thumb);

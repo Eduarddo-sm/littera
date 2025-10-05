@@ -1,1 +1,0 @@
-import{s as e}from"./supabase-C7rZz57M.js";document.getElementById("signout-btn");document.getElementById("userArea");async function n(){const{data:a}=await e.auth.getUser();a.user||(window.location.href="../pages/login/login.html",console.log("Usuário não autenticado. Redirecionando para a página de login."))}export{n as a};
