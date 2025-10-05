@@ -38,6 +38,9 @@ function createBookCard(livro: Livro) {
   const button = document.createElement('button');
   button.className = "more"
   button.textContent = 'Ver mais';
+    button.addEventListener('click', () => {
+      window.location.href = `../livro/livroPagina.html?id=${livro.id}`;
+    });
 
   card.appendChild(thumb);
   card.appendChild(title);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Livro - Littera</title>
+        <link rel="stylesheet" href="livroPagina.css">
+</head>
+<body>
+        <header class="main-header">
+            <div class="header-inner">
+                <div class="logo-header">
+                    <img src="../../images/logo-main.webp" alt="Littera logo" />
+                </div>
+            </div>
+        </header>
+        <main>
+            <section id="livro-info" class="livro-section">
+                <div class="livro-imagens" id="livro-imagens"></div>
+                <h2 id="livro-titulo"></h2>
+                <p id="livro-descricao"></p>
+                <button id="btn-proposta">Enviar proposta</button>
+            </section>
+        </main>
+        <script type="module" src="../../main/fetchUser.ts"></script>
+        <script type="module" src="../../main/fetchData.ts"></script>
+        <script type="module" src="../../main/fetchBooks.ts"></script>
+        <script type="module" src="../../main/livroPagina.ts"></script>
+</body>
+</html>
