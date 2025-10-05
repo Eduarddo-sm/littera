@@ -5,6 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
+    , "postinstall": "chmod +x node_modules/.bin/vite"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.58.0"
