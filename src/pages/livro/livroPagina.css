@@ -1,48 +1,118 @@
 .main-header {
-  background: #fff;
-  border-bottom: 1px solid #eee;
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	height: 10vh;
 }
 
 .header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: space-between;
-  padding: 14px 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	justify-content: space-between;
+	padding: 14px 20px;
 }
 
 .logo-header img {
-  width: 120px;
+	width: 120px;
 }
+
+main {
+	height: 90vh;
+	padding: 24px 0;
+}
+
 .livro-section {
-	max-width: 600px;
-	margin: 40px auto;
+	width: 1200px;
+	max-width: 95%;
+	height: 1200px;
+	max-height: 95%;
+	display: flex;
+	flex-wrap: wrap;
 	padding: 24px;
 	background: #fff;
 	border-radius: 12px;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 	text-align: center;
 }
 
-.livro-imagens {
+.imagens-contaier {
+	width: 40%;
+	height: 100%;
 	display: flex;
-	gap: 12px;
+	flex-direction: column;
+	gap: 5;
 	justify-content: center;
+	align-items: center;
 	margin-bottom: 18px;
+
+}
+
+.livro-imagens {
+	width: 90%;
+	height: 90%;
+	display: flex;
+}
+
+.imagens-botao {
+	width: 100%;
+	height: 10%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.imagens-botao button {
+	width: 35%;
+	height: 100%;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+	background: none;
+	transition: all ease 0.2s;
+}
+
+.imagens-botao button:hover {
+	background: #eee;
+	cursor: pointer;
 }
 
 .livro-img {
-	max-width: 120px;
-	max-height: 180px;
+	max-width: 90%;
+	max-height: 90%;
 	border-radius: 8px;
-	box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
+}
+
+.sobre-livro {
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 3%;
+	padding: 5px;
+}
+
+#livro-titulo {
+	font-size: 1.8rem;
+	margin: 0 auto;
+}
+
+.sobre-livro #livro-descricao {
+	width: 100%;
+	height: 50%;
+	border: 1px solid #eee;
+	padding: 12px;
+	border-radius: 8px;
 }
 
 #btn-proposta {
+	width: 90%;
+	margin: 0 auto;
 	margin-top: 24px;
+	margin-bottom: 10px;
 	padding: 12px 32px;
+	margin-top: auto;
 	background: #4f46e5;
 	color: #fff;
 	border: none;
@@ -51,6 +121,7 @@
 	cursor: pointer;
 	transition: background 0.2s;
 }
+
 #btn-proposta:hover {
 	background: #3730a3;
 }

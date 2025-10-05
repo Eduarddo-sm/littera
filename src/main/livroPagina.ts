@@ -8,7 +8,7 @@ function getBookIdFromUrl() {
 async function fetchBookById(id: string) {
   const { data, error } = await supabase
     .from('anuncios')
-    .select('id, titulo, sobre, imagens')
+    .select('id, titulo, autora, paginas, editora, sobre, imagens')
     .eq('id', id)
     .single();
   if (error) {
@@ -21,11 +21,17 @@ async function fetchBookById(id: string) {
 function renderBookInfo(livro: any) {
   if (!livro) return;
   const titulo = document.getElementById('livro-titulo');
+  const autor = document.getElementById('livro-autor');
+  const numeroPaginas = document.getElementById('numero-paginas');
+  const editora = document.getElementById('livro-editora');
   const descricao = document.getElementById('livro-descricao');
   const imagensDiv = document.getElementById('livro-imagens');
 
-  if (titulo) titulo.textContent = livro.titulo;
-  if (descricao) descricao.textContent = livro.sobre;
+  if (titulo) titulo.textContent = `${livro.titulo}`;
+  if (descricao) descricao.textContent = `Descrição: ${livro.sobre || 'Descrição não disponível'}`;
+  if (autor) autor.textContent = `Autor: ${livro.autora || 'Autor não disponível'}`;
+  if (numeroPaginas) numeroPaginas.textContent = `Número de páginas: ${livro.paginas || 'N/A'}`;
+  if (editora) editora.textContent = `Editora: ${livro.editora || 'Editora não disponível'}`;
   if (imagensDiv && livro.imagens && livro.imagens.length > 0) {
     imagensDiv.innerHTML = '';
     livro.imagens.forEach((src: string) => {
@@ -37,6 +43,8 @@ function renderBookInfo(livro: any) {
     });
   }
 }
+
+
 
 document.addEventListener('DOMContentLoaded', async () => {
   const id = getBookIdFromUrl();
