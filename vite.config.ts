@@ -16,6 +16,7 @@ export default defineConfig({
         cadastro: path.resolve(__dirname, 'src/pages/cadastro/cadastro.html'),
         userarea: path.resolve(__dirname, 'src/pages/userarea/userArea.html'),
         termos: path.resolve(__dirname, 'src/pages/termos/termos.html'),
+        meusAnuncios: path.resolve(__dirname, 'src/pages/meusAnuncios/meusAnuncios.html'),
         livroPagina: path.resolve(__dirname, 'src/pages/livro/livroPagina.html'),
       },
     },
