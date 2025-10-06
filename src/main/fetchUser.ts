@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-import { authGuard } from '../auth/guard';
+import { authGuard } from './auth';
 
 const userName = document.getElementById('user-name') as HTMLHeadingElement | null;
 const userFullName = document.getElementById('user-fullname') as HTMLDivElement | null;
@@ -8,7 +8,7 @@ const userPhone = document.getElementById('user-phone') as HTMLDivElement | null
 const userBio = document.getElementById('user-bio') as HTMLDivElement | null;
 
 async function loadUserData() {
-    // Pegar o usuário logado
+
     const { data: userData, error: userError } = await supabase.auth.getUser();
     const user = userData?.user;
 

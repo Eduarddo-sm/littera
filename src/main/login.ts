@@ -9,7 +9,7 @@ async function signIn(email: string, password: string) {
             return false;
         }
 
-        if (data && data.user) {
+        if (data.session.user) {
             return true;
         }
 

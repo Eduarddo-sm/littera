@@ -1,0 +1,1 @@
+import{s as a}from"./supabase-Ddly9FIE.js";async function n(){try{const{data:o}=await a.auth.getUser();o.user||(window.location.href="../pages/login/login.html",console.log("Usuário não autenticado. Redirecionando para a página de login."))}catch(o){console.error("Erro ao obter usuário:",o),window.location.href="../pages/login/login.html"}}export{n as a};
