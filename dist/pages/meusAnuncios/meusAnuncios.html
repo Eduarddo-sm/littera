@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <script type="module" crossorigin src="../../assets/meusAnuncios-BwyMuLbm.js"></script>
+  <link rel="modulepreload" crossorigin href="../../assets/supabase-BDK56hxo.js">
+  <link rel="stylesheet" crossorigin href="../../assets/supabase-N1HkhQ76.css">
+  <link rel="stylesheet" crossorigin href="../../assets/meusAnuncios-C-REPLSl.css">
+</head>
+<body>
+    <header class="main-header">
+      <div class="header-inner">
+        <div class="logo-header">
+          <img src="../../assets/logo-main-yTijB8_R.webp" alt="Littera logo" />
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="form-section">
+        <h2>Cadastrar Livro</h2>
+        <form id="form-cadastrar-livro" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="titulo">Título do Livro:</label>
+            <input type="text" id="titulo" name="titulo" required />
+          </div>
+          <div class="form-group">
+            <label for="autora">Nome da Autora:</label>
+            <input type="text" id="autora" name="autora" required />
+          </div>
+          <div class="form-group">
+            <label for="paginas">Número de Páginas:</label>
+            <input type="number" id="paginas" name="paginas" min="1" required />
+          </div>
+          <div class="form-group">
+            <label for="editora">Nome da Editora:</label>
+            <input type="text" id="editora" name="editora" required />
+          </div>
+          <div class="form-group">
+            <label for="sobre">Descrição do anúncio</label>
+            <textarea name="sobre" id="sobre" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="imagem">Imagem do Livro:</label>
+            <input type="file" id="imagem" name="imagem" accept="image/*" required />
+          </div>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </section>
+    </main>
+
+</body>
+</html>

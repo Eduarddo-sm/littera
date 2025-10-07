@@ -1,9 +1,33 @@
 import { supabase } from './supabase';
 
+
+
 function getBookIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return params.get('id');
 }
+
+async function fetchUserProfile(id: string){
+  const {data, error} = await supabase
+    .from('anuncios')
+    .select(`
+      user_id,
+      profiles(
+          user_profile,
+          username
+          )
+      `)
+      .eq('id', id)
+      .single();
+
+      if(error){
+        console.error('Erro ao buscar perfil do usuário:', error);
+        return null;
+      }
+      return data;
+}
+
+
 
 async function fetchBookById(id: string) {
   const { data, error } = await supabase
@@ -16,6 +40,20 @@ async function fetchBookById(id: string) {
     return null;
   }
   return data;
+}
+
+function renderUserProfile(user: any) {
+  if (!user || !user.profiles) return;
+  const anunciadorLink = document.getElementById('anunciador-link') as HTMLAnchorElement;
+  const anunciadorImg = anunciadorLink?.querySelector('img') as HTMLImageElement;
+  const anunciadorName = anunciadorLink?.querySelector('p') as HTMLParagraphElement;
+
+  const profile = user.profiles;
+
+  if (anunciadorImg) anunciadorImg.src = profile?.user_profile || '';
+  if (anunciadorName) anunciadorName.textContent = profile?.username || '';
+  if (anunciadorLink) anunciadorLink.href = `/perfil.html?id=${user.user_id}`;
+
 }
 
 function renderBookInfo(livro: any) {
@@ -50,7 +88,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const id = getBookIdFromUrl();
   if (!id) return;
   const livro = await fetchBookById(id);
+  const user = await fetchUserProfile(id);
   renderBookInfo(livro);
+  renderUserProfile(user);
   const btnProposta = document.getElementById('btn-proposta');
   if (btnProposta) {
     btnProposta.addEventListener('click', () => {
