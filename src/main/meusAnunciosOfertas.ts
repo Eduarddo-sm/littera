@@ -364,6 +364,20 @@ function closeModal() {
 
 async function updatePropostaStatus(propostaId: string, newStatus: 'aceita' | 'recusada') {
   try {
+
+    const { data: proposta, error: fetchError } = await supabase
+      .from('propostas')
+      .select('anuncio_id')
+      .eq('id', propostaId)
+      .single();
+
+    if (fetchError) {
+      console.error('Erro ao buscar proposta:', fetchError);
+      alert('Erro ao buscar proposta. Tente novamente.');
+      return;
+    }
+
+
     const { error } = await supabase
       .from('propostas')
       .update({ status: newStatus })
@@ -372,9 +386,23 @@ async function updatePropostaStatus(propostaId: string, newStatus: 'aceita' | 'r
     if (error) {
       console.error('Erro ao atualizar status:', error);
       alert('Erro ao atualizar proposta. Tente novamente.');
-    } else {
-      alert(`Proposta ${newStatus} com sucesso!`);
+      return;
     }
+
+
+    if (newStatus === 'aceita' && proposta?.anuncio_id) {
+      const { error: anuncioError } = await supabase
+        .from('anuncios')
+        .update({ status: 'FECHADO' })
+        .eq('id', proposta.anuncio_id);
+
+      if (anuncioError) {
+        console.error('Erro ao fechar anúncio:', anuncioError);
+
+      }
+    }
+
+    alert(`Proposta ${newStatus} com sucesso!${newStatus === 'aceita' ? ' O anúncio foi fechado automaticamente.' : ''}`);
   } catch (err) {
     console.error('Erro inesperado:', err);
     alert('Erro inesperado. Tente novamente.');

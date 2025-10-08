@@ -6,7 +6,7 @@ async function fetchBooks(query?: string) {
     let builder = supabase
       .from('anuncios')
       .select('id, titulo, autora, paginas, editora, sobre, imagens, status')
-      .or('status.eq.EM ABERTO,status.is.null'); // Anúncios em aberto ou sem status definido
+      .or('status.eq.EM ABERTO,status.is.null,status.eq.FECHADO'); 
 
     if (query && query.trim() !== '') {
       const q = query.trim();
@@ -54,6 +54,10 @@ function createBookCard(livro: Livro) {
   const parts: string[] = [];
 
   if (livro.status) parts.push(livro.status);
+  if (livro.status === 'FECHADO') {
+    meta.style.color = '#bb0000ff';
+    meta.style.background = '#ffa9a9d5';
+  }
   meta.textContent = parts.join(' ');
 
   const desc = document.createElement('p');

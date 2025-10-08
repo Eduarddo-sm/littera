@@ -215,8 +215,14 @@ main {
 	margin-top: 10px;
 }
 
-#btn-proposta:hover {
+#btn-proposta:hover:not(:disabled) {
 	background: #3730a3;
+}
+
+#btn-proposta:disabled {
+	background: #9ca3af;
+	cursor: not-allowed;
+	opacity: 0.7;
 }
 
 .modal {

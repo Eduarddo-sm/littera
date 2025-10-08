@@ -117,15 +117,24 @@ function initPropostaModal() {
         return;
       }
 
-
+    
       const { data: anuncio } = await supabase
         .from('anuncios')
-        .select('user_id')
+        .select('user_id, status')
         .eq('id', anuncioId)
         .single();
 
       if (!anuncio) {
         alert('Anúncio não encontrado');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar Proposta';
+        return;
+      }
+
+   
+      if (anuncio.status === 'FECHADO') {
+        alert('Este anúncio já está fechado e não aceita mais propostas.');
+        modal.style.display = 'none';
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar Proposta';
         return;

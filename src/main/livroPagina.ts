@@ -77,7 +77,7 @@ async function fetchPropostaStatus(anuncioId: string) {
 async function fetchBookById(id: string) {
   const { data, error } = await supabase
     .from('anuncios')
-    .select('id, titulo, autora, paginas, editora, sobre, imagens')
+    .select('id, titulo, autora, paginas, editora, sobre, imagens, status')
     .eq('id', id)
     .single();
   if (error) {
@@ -215,14 +215,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   const propostaStatus = await fetchPropostaStatus(id);
   
   console.log('Proposta Status final:', propostaStatus);
+  console.log('Status do livro:', livro?.status);
   
   renderBookInfo(livro);
   renderUserProfile(user, propostaStatus);
   
-  const btnProposta = document.getElementById('btn-proposta');
-  if (btnProposta) {
-    btnProposta.addEventListener('click', () => {
-      btnProposta
-    });
+  const btnProposta = document.getElementById('btn-proposta') as HTMLButtonElement;
+  if (btnProposta && livro) {
+    if (livro.status === 'FECHADO') {
+      btnProposta.disabled = true;
+      btnProposta.textContent = 'Anúncio Fechado';
+      btnProposta.style.background = '#9ca3af';
+      btnProposta.style.cursor = 'not-allowed';
+    }
   }
 });

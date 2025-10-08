@@ -1,4 +1,4 @@
-import{s as d}from"./supabase-BafKp-QD.js";let r="todas",c=null,i=[];async function v(){try{const{data:{user:e}}=await d.auth.getUser();if(!e)return console.error("Usuário não autenticado"),[];const{data:a,error:t}=await d.from("propostas").select(`
+import{s as d}from"./supabase-DontodQT.js";let r="todas",c=null,i=[];async function v(){try{const{data:{user:e}}=await d.auth.getUser();if(!e)return console.error("Usuário não autenticado"),[];const{data:a,error:t}=await d.from("propostas").select(`
         *,
         anuncios (
           titulo,

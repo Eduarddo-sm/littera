@@ -16,7 +16,7 @@ interface UserProfile {
 let currentUser: UserProfile | null = null;
 let selectedAvatarFile: File | null = null;
 
-// Elementos do DOM
+
 const viewMode = document.getElementById('view-mode') as HTMLElement;
 const editMode = document.getElementById('edit-mode') as HTMLElement;
 const editProfileBtn = document.getElementById('edit-profile-btn') as HTMLButtonElement;
@@ -25,7 +25,7 @@ const editForm = document.getElementById('edit-profile-form') as HTMLFormElement
 const avatarInput = document.getElementById('edit-avatar') as HTMLInputElement;
 const avatarPreview = document.getElementById('avatar-preview') as HTMLElement;
 
-// Carregar perfil do usuário
+
 async function loadUserProfile() {
   try {
     const { data: { user } } = await supabase.auth.getUser();
