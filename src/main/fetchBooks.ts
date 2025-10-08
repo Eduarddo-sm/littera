@@ -3,7 +3,9 @@ import { supabase } from './supabase';
 
 async function fetchBooks(query?: string) {
   try {
-    let builder = supabase.from('anuncios').select('id, titulo, sobre, imagens');
+    let builder = supabase
+      .from('anuncios')
+      .select('id, titulo, autora, paginas, editora, sobre, imagens, status');
 
     if (query && query.trim() !== '') {
       const q = query.trim();
@@ -25,13 +27,18 @@ async function fetchBooks(query?: string) {
 type Livro = {
   id: string;
   titulo: string;
+  autora?: string;
+  paginas?: number;
+  editora?: string;
   sobre: string;
   imagens: string[];
+  status?: string;
 };
 
 function createBookCard(livro: Livro) {
   const card = document.createElement('div');
   card.className = 'card';
+  card.style.position = 'relative';
 
   const thumb = document.createElement('img');
   thumb.className = 'card-thumb';
@@ -40,6 +47,13 @@ function createBookCard(livro: Livro) {
 
   const title = document.createElement('h3');
   title.textContent = livro.titulo;
+
+  const meta = document.createElement('div');
+  meta.className = 'card-meta';
+  const parts: string[] = [];
+
+  if (livro.status) parts.push(livro.status);
+  meta.textContent = parts.join(' ');
 
   const desc = document.createElement('p');
   desc.textContent = livro.sobre;
@@ -52,6 +66,7 @@ function createBookCard(livro: Livro) {
     });
 
   card.appendChild(thumb);
+  card.appendChild(meta);
   card.appendChild(title);
   card.appendChild(desc);
   card.appendChild(button);
