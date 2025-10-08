@@ -10,25 +10,26 @@
   <body>
     <header>
       <div class="logo-left">
-        <img src="../../images/logo-main.webp" alt="Littera logo" />
+        <a href="../../index.html"><img src="../../images/logo-main.webp" alt="Littera logo" /></a>
       </div>
     </header>
     <div class="main-layout">
       <aside class="sidebar user-sidebar">
         <div class="user-panel">
-          <div class="user-avatar-large"></div>
+          <div class="user-avatar-large" id="user-avatar"></div>
           <h4 id="user-name" class="user-name">Username</h4>
+          <button id="edit-profile-btn" class="edit-profile-btn">Editar Perfil</button>
         </div>
       </aside>
       <main class="content-area user-content">
-        <section class="user-about">
+        <section class="user-about" id="view-mode">
           <h2>Informações Pessoais:</h2>
           <div class="field">
             <div class="label">Nome Completo:</div>
             <div id="user-fullname" class="user-fullname">Nome Completo do usuário</div>
           </div>
 
-            <div class="field">
+          <div class="field">
             <div class="label">Email:</div>
             <div id="user-email" class="user-email">teste@admin</div>
           </div>
@@ -46,14 +47,61 @@
             </div>
           </div>
         </section>
+
+        <section class="user-edit" id="edit-mode" style="display: none;">
+          <h2>Editar Perfil:</h2>
+          <form id="edit-profile-form">
+            <div class="form-group">
+              <label for="edit-avatar">Foto de Perfil:</label>
+              <div class="avatar-upload-container">
+                <div class="avatar-preview" id="avatar-preview"></div>
+                <input type="file" id="edit-avatar" accept="image/jpeg,image/jpg,image/png">
+                <label for="edit-avatar" class="file-label">Escolher Foto</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-username">Username:</label>
+              <input type="text" id="edit-username" required>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-fullname">Nome Completo:</label>
+              <input type="text" id="edit-fullname" required>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-email">Email:</label>
+              <input type="email" id="edit-email" required disabled>
+              <small>O email não pode ser alterado</small>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-phone">Telefone:</label>
+              <input type="tel" id="edit-phone">
+            </div>
+
+            <div class="form-group">
+              <label for="edit-bio">Bio:</label>
+              <textarea id="edit-bio" rows="4"></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-save">Salvar Alterações</button>
+              <button type="button" id="cancel-edit-btn" class="btn-cancel">Cancelar</button>
+            </div>
+          </form>
+        </section>
+
         <footer>
-            <a class="back-link" href="../../index.html"> Voltar</a>
-            <a id="delete-account" class="delete-account" href="#">Apagar conta</a>
-          </footer>
+          <a class="back-link" href="../../index.html">Voltar</a>
+          <a id="delete-account" class="delete-account" href="#">Apagar conta</a>
+        </footer>
       </main>
     </div>
 
     <script type="module" src="../../main/fetchUser.ts"></script>
-    <script type="module" src="../../main/auth.ts"></script>    
+    <script type="module" src="../../main/auth.ts"></script>
+    <script type="module" src="../../main/userArea.ts"></script>
   </body>
 </html>

@@ -57,14 +57,15 @@ main {
 }
 
 .anunciador a {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	text-decoration: none;
-	color: #000;
-	transition: all ease 0.4s;
-	border-radius: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    color: #000;
+    transition: all ease 0.4s;
+    border-radius: 5px;
+    gap: 12px;
 }
 
 .anunciador a:hover {
@@ -77,6 +78,39 @@ main {
 	height: 40px;
 	border-radius: 50%;
 	object-fit: cover;
+}
+
+.anunciador-info {
+    display: flex;
+    align-items: flex-start;
+	justify-content: space-between;
+    gap: 6px;
+    flex: 1;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.60rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+	padding: 5px;
+}
+
+.status-pendente {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-aceita {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-recusada {
+    background: #fee2e2;
+    color: #991b1b;
 }
 
 .livro-imagens {
