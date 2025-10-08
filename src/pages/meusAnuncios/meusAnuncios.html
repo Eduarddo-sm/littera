@@ -15,7 +15,14 @@
         </div>
       </div>
     </header>
-    <main>
+    <main class="main-container">
+      <section class="propostas-section">
+        <h2>Propostas Recebidas</h2>
+        <div id="propostas-list" class="propostas-list">
+        </div>
+      </section>
+
+
       <section class="form-section">
         <h2>Cadastrar Livro</h2>
         <form id="form-cadastrar-livro" enctype="multipart/form-data">
@@ -48,6 +55,17 @@
       </section>
     </main>
 
+
+    <div id="proposta-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Detalhes da Proposta</h2>
+        <div id="modal-body">
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="../../main/novoAnuncio.ts"></script>
+    <script type="module" src="../../main/meusAnunciosOfertas.ts"></script>
 </body>
 </html>
