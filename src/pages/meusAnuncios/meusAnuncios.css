@@ -19,11 +19,134 @@
 
 .main-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 40px auto;
   padding: 0 20px;
+}
+
+.anuncios-section {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  background: #fafafa;
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+.anuncios-section h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  color: #2d3748;
+}
+
+.anuncios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.anuncio-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s;
+}
+
+.anuncio-card.fechado {
+  opacity: 0.6;
+  background: #f9fafb;
+}
+
+.anuncio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.anuncio-titulo {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.anuncio-status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.anuncio-status-badge.em-aberto {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.anuncio-status-badge.fechado {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.anuncio-info {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.anuncio-imagem {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.anuncio-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-fechar-anuncio,
+.btn-reabrir-anuncio {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-fechar-anuncio {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.btn-fechar-anuncio:hover {
+  background: #fecaca;
+}
+
+.btn-reabrir-anuncio {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.btn-reabrir-anuncio:hover {
+  background: #a7f3d0;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #9ca3af;
 }
 
 .propostas-section {
@@ -344,12 +467,12 @@ button[type="submit"]:hover {
   cursor: not-allowed;
 }
 
-
 @media (max-width: 1024px) {
   .main-container {
     grid-template-columns: 1fr;
   }
 
+  .anuncios-section,
   .propostas-section {
     max-height: 500px;
   }

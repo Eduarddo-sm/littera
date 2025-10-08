@@ -1,5 +1,18 @@
 import { supabase } from './supabase';
 
+type Anuncio = {
+  id: string;
+  user_id: string;
+  titulo: string;
+  autora: string;
+  paginas: number;
+  editora: string;
+  sobre: string;
+  imagens: string[];
+  status: string;
+  created_at?: string;
+};
+
 type Proposta = {
   id: string;
   anuncio_id: string;
@@ -14,6 +27,156 @@ type Proposta = {
   interessado_username?: string;
   interessado_name?: string;
 };
+
+async function fetchMeusAnuncios(): Promise<Anuncio[]> {
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      console.error('Usuário não autenticado');
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('anuncios')
+      .select('id, user_id, titulo, autora, paginas, editora, sobre, imagens, status')
+      .eq('user_id', user.id);
+
+    if (error) {
+      console.error('Erro ao buscar anúncios:', error);
+      console.error('Detalhes do erro:', JSON.stringify(error, null, 2));
+      return [];
+    }
+
+    console.log('Anúncios encontrados:', data);
+    return data || [];
+  } catch (err) {
+    console.error('Erro inesperado ao buscar anúncios:', err);
+    return [];
+  }
+}
+
+
+async function toggleAnuncioStatus(anuncioId: string, currentStatus: string) {
+  try {
+    const newStatus = currentStatus === 'EM ABERTO' ? 'FECHADO' : 'EM ABERTO';
+    
+    const { error } = await supabase
+      .from('anuncios')
+      .update({ status: newStatus })
+      .eq('id', anuncioId);
+
+    if (error) {
+      console.error('Erro ao atualizar status:', error);
+      alert('Erro ao atualizar anúncio. Tente novamente.');
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.error('Erro inesperado:', err);
+    alert('Erro inesperado. Tente novamente.');
+    return false;
+  }
+}
+
+
+function createAnuncioCard(anuncio: Anuncio): HTMLElement {
+  const card = document.createElement('div');
+  const status = anuncio.status || 'EM ABERTO';
+  card.className = `anuncio-card ${status === 'FECHADO' ? 'fechado' : ''}`;
+
+  const header = document.createElement('div');
+  header.className = 'anuncio-header';
+
+  const titulo = document.createElement('div');
+  titulo.className = 'anuncio-titulo';
+  titulo.textContent = anuncio.titulo;
+
+  const statusBadge = document.createElement('span');
+  statusBadge.className = `anuncio-status-badge ${status === 'EM ABERTO' ? 'em-aberto' : 'fechado'}`;
+  statusBadge.textContent = status;
+
+  header.appendChild(titulo);
+  header.appendChild(statusBadge);
+
+  const info = document.createElement('div');
+  info.className = 'anuncio-info';
+  info.innerHTML = `
+    <strong>Autor:</strong> ${anuncio.autora}<br>
+    <strong>Editora:</strong> ${anuncio.editora}<br>
+    <strong>Páginas:</strong> ${anuncio.paginas}
+  `;
+
+  card.appendChild(header);
+
+ 
+  if (anuncio.imagens && anuncio.imagens.length > 0) {
+    const img = document.createElement('img');
+    img.src = anuncio.imagens[0];
+    img.alt = anuncio.titulo;
+    img.className = 'anuncio-imagem';
+    card.appendChild(img);
+  }
+
+  card.appendChild(info);
+
+
+  const actionsDiv = document.createElement('div');
+  actionsDiv.className = 'anuncio-actions';
+
+  if (status === 'EM ABERTO') {
+    const btnFechar = document.createElement('button');
+    btnFechar.className = 'btn-fechar-anuncio';
+    btnFechar.textContent = 'Fechar Anúncio';
+    btnFechar.addEventListener('click', async () => {
+      if (confirm('Deseja realmente fechar este anúncio? Ele não aparecerá mais na página inicial.')) {
+        const success = await toggleAnuncioStatus(anuncio.id, status);
+        if (success) {
+          renderAnuncios();
+        }
+      }
+    });
+    actionsDiv.appendChild(btnFechar);
+  } else {
+    const btnReabrir = document.createElement('button');
+    btnReabrir.className = 'btn-reabrir-anuncio';
+    btnReabrir.textContent = 'Reabrir Anúncio';
+    btnReabrir.addEventListener('click', async () => {
+      const success = await toggleAnuncioStatus(anuncio.id, status);
+      if (success) {
+        renderAnuncios();
+      }
+    });
+    actionsDiv.appendChild(btnReabrir);
+  }
+
+  card.appendChild(actionsDiv);
+
+  return card;
+}
+
+
+async function renderAnuncios() {
+  const anuncios = await fetchMeusAnuncios();
+  const container = document.getElementById('anuncios-list');
+  
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  if (anuncios.length === 0) {
+    const empty = document.createElement('p');
+    empty.textContent = 'Você ainda não tem anúncios cadastrados.';
+    empty.style.textAlign = 'center';
+    empty.style.color = '#6b7280';
+    container.appendChild(empty);
+    return;
+  }
+
+  anuncios.forEach(anuncio => {
+    container.appendChild(createAnuncioCard(anuncio));
+  });
+}
 
 async function fetchPropostasRecebidas(): Promise<Proposta[]> {
   try {
@@ -233,6 +396,7 @@ async function renderPropostas() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  renderAnuncios();
   renderPropostas();
 
 

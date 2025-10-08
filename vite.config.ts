@@ -18,6 +18,7 @@ export default defineConfig({
         termos: path.resolve(__dirname, 'src/pages/termos/termos.html'),
         meusAnuncios: path.resolve(__dirname, 'src/pages/meusAnuncios/meusAnuncios.html'),
         livroPagina: path.resolve(__dirname, 'src/pages/livro/livroPagina.html'),
+        minhaProposta: path.resolve(__dirname, 'src/pages/minhasPropostas/minhasPropostas.html'),
       },
     },
   },

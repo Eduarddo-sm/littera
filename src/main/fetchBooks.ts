@@ -5,7 +5,8 @@ async function fetchBooks(query?: string) {
   try {
     let builder = supabase
       .from('anuncios')
-      .select('id, titulo, autora, paginas, editora, sobre, imagens, status');
+      .select('id, titulo, autora, paginas, editora, sobre, imagens, status')
+      .or('status.eq.EM ABERTO,status.is.null'); // Anúncios em aberto ou sem status definido
 
     if (query && query.trim() !== '') {
       const q = query.trim();

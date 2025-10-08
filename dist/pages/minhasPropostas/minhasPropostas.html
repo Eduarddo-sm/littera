@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Propostas - Littera</title>
+  <script type="module" crossorigin src="../../assets/minhaProposta-BTuFB7qU.js"></script>
+  <link rel="modulepreload" crossorigin href="../../assets/supabase-BafKp-QD.js">
+  <link rel="stylesheet" crossorigin href="../../assets/supabase-N1HkhQ76.css">
+  <link rel="stylesheet" crossorigin href="../../assets/minhaProposta-BkpB7qb1.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-inner">
+            <div class="logo-header">
+                <a href="../../index.html"><img src="../../assets/logo-main-yTijB8_R.webp" alt="Littera logo" /></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Minhas Propostas Enviadas</h1>
+            <p class="subtitle">Acompanhe o status das suas propostas</p>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="todas">Todas</button>
+            <button class="filter-btn" data-filter="pendente">Pendentes</button>
+            <button class="filter-btn" data-filter="aceita">Aceitas</button>
+            <button class="filter-btn" data-filter="recusada">Recusadas</button>
+        </div>
+
+        <section id="propostas-container" class="propostas-container">
+            <div class="loading">Carregando propostas...</div>
+        </section>
+    </main>
+
+    <div id="cancel-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cancelar Proposta</h2>
+            <p>Tem certeza que deseja cancelar esta proposta?</p>
+            <div class="modal-actions">
+                <button id="confirm-cancel" class="btn-danger">Sim, cancelar</button>
+                <button id="cancel-cancel" class="btn-secondary">Não, manter</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="details-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close-modal">&times;</span>
+            <h2>Detalhes da Proposta</h2>
+            <div id="details-body"></div>
+        </div>
+    </div>
+
+</body>
+</html>
