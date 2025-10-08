@@ -26,6 +26,7 @@ type Proposta = {
   anuncio_titulo?: string;
   interessado_username?: string;
   interessado_name?: string;
+  interessado_phone?: string;
 };
 
 async function fetchMeusAnuncios(): Promise<Anuncio[]> {
@@ -199,7 +200,7 @@ async function fetchPropostasRecebidas(): Promise<Proposta[]> {
         status,
         created_at,
         anuncios:anuncio_id (titulo),
-        profiles:interessado_id (username, name)
+        profiles:interessado_id (username, name, phone)
       `)
       .eq('anunciante_id', user.id)
       .order('created_at', { ascending: false });
@@ -220,7 +221,8 @@ async function fetchPropostasRecebidas(): Promise<Proposta[]> {
       status: p.status,
       created_at: p.created_at,
       anuncio_titulo: p.anuncios?.titulo || 'Anúncio não encontrado',
-      interessado_username: p.profiles?.username || p.profiles?.name || 'Usuário desconhecido'
+      interessado_username: p.profiles?.username || p.profiles?.name || 'Usuário desconhecido',
+      interessado_phone: p.profiles?.phone || null
     }));
   } catch (err) {
     console.error('Erro inesperado ao buscar propostas:', err);
@@ -284,6 +286,13 @@ function openPropostaModal(proposta: Proposta) {
   infoInteressado.className = 'modal-proposta-info';
   infoInteressado.innerHTML = `<strong>Interessado:</strong> ${proposta.interessado_username}`;
   modalBody.appendChild(infoInteressado);
+
+  if (proposta.status === 'aceita' && proposta.interessado_phone) {
+    const infoTelefone = document.createElement('div');
+    infoTelefone.className = 'modal-proposta-info contact-info';
+    infoTelefone.innerHTML = `<strong>📱 Telefone para contato:</strong> <a href="tel:${proposta.interessado_phone}">${proposta.interessado_phone}</a>`;
+    modalBody.appendChild(infoTelefone);
+  }
 
   const infoValor = document.createElement('div');
   infoValor.className = 'modal-proposta-info';

@@ -410,6 +410,25 @@ button[type="submit"]:hover {
   color: #2d3748;
 }
 
+.contact-info {
+  background: #d1fae5;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #10b981;
+  margin: 16px 0;
+}
+
+.contact-info a {
+  color: #065f46;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
 .modal-images {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

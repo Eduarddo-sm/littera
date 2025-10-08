@@ -18,6 +18,7 @@ type Proposta = {
   profiles?: {
     username: string;
     avatar_url: string;
+    phone: string;
   };
 };
 
@@ -46,7 +47,8 @@ async function fetchMinhasPropostas() {
         ),
         profiles!propostas_anunciante_id_fkey (
           username,
-          avatar_url
+          avatar_url,
+          phone
         )
       `)
       .eq('interessado_id', user.id)
@@ -230,6 +232,20 @@ function showPropostaDetails(propostaId: string) {
     `;
   }
 
+  let contatoHtml = '';
+  if (proposta.status === 'aceita' && proposta.profiles?.phone) {
+    contatoHtml = `
+      <div class="detail-row contact-info">
+        <div class="detail-label">📱 Telefone do Anunciante para Contato:</div>
+        <div class="detail-value">
+          <a href="tel:${proposta.profiles.phone}" style="font-size: 1.2rem; font-weight: 600; color: #065f46;">
+            ${proposta.profiles.phone}
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
   detailsBody.innerHTML = `
     <div class="detail-row">
       <div class="detail-label">Anúncio:</div>
@@ -247,6 +263,8 @@ function showPropostaDetails(propostaId: string) {
         <span class="status-badge ${statusClass}">${statusTexto}</span>
       </div>
     </div>
+
+    ${contatoHtml}
 
     <div class="detail-row">
       <div class="detail-label">Valor Oferecido:</div>
@@ -271,9 +289,9 @@ function showPropostaDetails(propostaId: string) {
   modal.classList.add('active');
 }
 
-// Setup event listeners
+
 function setupCardListeners() {
-  // Botões de ver detalhes
+
   document.querySelectorAll('.btn-details').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -282,7 +300,7 @@ function setupCardListeners() {
     });
   });
 
-  // Botões de cancelar
+
   document.querySelectorAll('.btn-cancel').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -296,13 +314,13 @@ function setupCardListeners() {
   });
 }
 
-// Inicializar
+
 document.addEventListener('DOMContentLoaded', async () => {
-  // Buscar propostas
+
   allPropostas = await fetchMinhasPropostas() as Proposta[];
   renderPropostas(allPropostas);
 
-  // Filtros
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.getAttribute('data-filter');
@@ -310,7 +328,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // Modal de cancelamento
+
   const cancelModal = document.getElementById('cancel-modal');
   const confirmCancel = document.getElementById('confirm-cancel');
   const cancelCancel = document.getElementById('cancel-cancel');
@@ -320,7 +338,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (currentPropostaId) {
         const success = await cancelarProposta(currentPropostaId);
         if (success) {
-          // Atualizar lista
           allPropostas = await fetchMinhasPropostas() as Proposta[];
           filterPropostas(currentFilter);
           
@@ -338,7 +355,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Fechar modais
+
   document.querySelectorAll('.close-modal').forEach(closeBtn => {
     closeBtn.addEventListener('click', () => {
       document.querySelectorAll('.modal').forEach(modal => {
@@ -347,7 +364,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // Fechar modal ao clicar fora
   document.querySelectorAll('.modal').forEach(modal => {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {

@@ -240,7 +240,6 @@
     cursor: not-allowed;
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -332,7 +331,6 @@
     background: #e5e7eb;
 }
 
-/* Detalhes no modal */
 .detail-row {
     margin-bottom: 15px;
 }
@@ -346,6 +344,28 @@
 .detail-value {
     color: #333;
     line-height: 1.6;
+}
+
+.contact-info {
+    background: #d1fae5 !important;
+    padding: 16px !important;
+    border-radius: 8px;
+    border-left: 4px solid #10b981 !important;
+    margin: 16px 0;
+}
+
+.contact-info .detail-label {
+    color: #065f46 !important;
+    font-size: 1.1rem;
+}
+
+.contact-info a {
+    color: #065f46;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
 }
 
 .detail-images {
@@ -362,7 +382,6 @@
     border-radius: 8px;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .page-header h1 {
         font-size: 1.5rem;
