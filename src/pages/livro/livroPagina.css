@@ -37,7 +37,8 @@ main {
 	text-align: center;
 }
 
-.imagens-contaier {
+.imagens-container {
+	width: 40%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -117,6 +118,19 @@ main {
 	width: 90%;
 	height: 90%;
 	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.livro-img {
+	max-width: 50%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	border-radius: 8px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
 }
 
 .imagens-botao {
@@ -124,6 +138,7 @@ main {
 	height: 10%;
 	display: flex;
 	justify-content: space-around;
+	gap: 10px;
 }
 
 .imagens-botao button {
@@ -132,7 +147,10 @@ main {
 	border-radius: 5px;
 	outline: none;
 	border: none;
-	background: none;
+	background: rgba(0, 0, 0, 0.05);
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #333;
 	transition: all ease 0.2s;
 }
 
@@ -141,11 +159,8 @@ main {
 	cursor: pointer;
 }
 
-.livro-img {
-	max-width: 90%;
-	max-height: 90%;
-	border-radius: 8px;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
+.imagens-botao button:active {
+	transform: scale(0.95);
 }
 
 .sobre-livro {

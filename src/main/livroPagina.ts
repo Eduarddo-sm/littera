@@ -131,6 +131,9 @@ function renderUserProfile(user: any, propostaStatus: any = null) {
   }
 }
 
+let currentImageIndex = 0;
+let totalImages = 0;
+
 function renderBookInfo(livro: any) {
   if (!livro) return;
   const titulo = document.getElementById('livro-titulo');
@@ -145,14 +148,58 @@ function renderBookInfo(livro: any) {
   if (autor) autor.textContent = `Autor: ${livro.autora || 'Autor não disponível'}`;
   if (numeroPaginas) numeroPaginas.textContent = `Número de páginas: ${livro.paginas || 'N/A'}`;
   if (editora) editora.textContent = `Editora: ${livro.editora || 'Editora não disponível'}`;
+  
   if (imagensDiv && livro.imagens && livro.imagens.length > 0) {
-    imagensDiv.innerHTML = '';
-    livro.imagens.forEach((src: string) => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = livro.titulo;
-      img.className = 'livro-img';
-      imagensDiv.appendChild(img);
+    totalImages = livro.imagens.length;
+    currentImageIndex = 0;
+    
+
+    renderCurrentImage(imagensDiv, livro.imagens, livro.titulo);
+    
+
+    setupImageNavigation(imagensDiv, livro.imagens, livro.titulo);
+  }
+}
+
+function renderCurrentImage(container: HTMLElement, imagens: string[], titulo: string) {
+  container.innerHTML = '';
+  
+  if (imagens.length > 0) {
+    const img = document.createElement('img');
+    img.src = imagens[currentImageIndex];
+    img.alt = `${titulo} - Imagem ${currentImageIndex + 1} de ${totalImages}`;
+    img.className = 'livro-img';
+    container.appendChild(img);
+  }
+}
+
+function setupImageNavigation(container: HTMLElement, imagens: string[], titulo: string) {
+  const btnPrev = document.getElementById('btn-prev-img');
+  const btnNext = document.getElementById('btn-next-img');
+  
+
+  const updateButtonsVisibility = () => {
+    if (btnPrev) {
+      btnPrev.style.display = totalImages > 1 ? 'block' : 'none';
+    }
+    if (btnNext) {
+      btnNext.style.display = totalImages > 1 ? 'block' : 'none';
+    }
+  };
+  
+  updateButtonsVisibility();
+  
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+      renderCurrentImage(container, imagens, titulo);
+    });
+  }
+  
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex + 1) % totalImages;
+      renderCurrentImage(container, imagens, titulo);
     });
   }
 }
