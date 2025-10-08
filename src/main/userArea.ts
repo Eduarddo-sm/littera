@@ -51,9 +51,9 @@ async function loadUserProfile() {
   }
 }
 
-// Exibir perfil no modo visualização
+
 function displayUserProfile(profile: UserProfile) {
-  // Atualizar elementos de visualização
+
   const userNameEl = document.getElementById('user-name') as HTMLElement;
   const userFullnameEl = document.getElementById('user-fullname') as HTMLElement;
   const userEmailEl = document.getElementById('user-email') as HTMLElement;
@@ -66,13 +66,13 @@ function displayUserProfile(profile: UserProfile) {
   userEmailEl.textContent = profile.email || 'Email não informado';
   userPhoneEl.textContent = profile.phone || 'Telefone não informado';
   
-  // Carregar avatar se existir
+  
   if (profile.avatar_url) {
     const avatarUrl = supabase.storage.from('userProfiles').getPublicUrl(profile.avatar_url).data.publicUrl;
     userAvatarEl.style.backgroundImage = `url(${avatarUrl})`;
   }
 
-  // Preencher formulário de edição
+
   (document.getElementById('edit-username') as HTMLInputElement).value = profile.username || '';
   (document.getElementById('edit-fullname') as HTMLInputElement).value = profile.name || '';
   (document.getElementById('edit-email') as HTMLInputElement).value = profile.email || '';
@@ -84,18 +84,18 @@ function displayUserProfile(profile: UserProfile) {
   }
 }
 
-// Preview do avatar selecionado
+
 avatarInput.addEventListener('change', (e) => {
   const file = (e.target as HTMLInputElement).files?.[0];
   if (file) {
-    // Validar tipo de arquivo
+
     if (!['image/jpeg', 'image/jpg', 'image/png'].includes(file.type)) {
       alert('Por favor, selecione uma imagem JPG ou PNG');
       avatarInput.value = '';
       return;
     }
 
-    // Validar tamanho (máx 5MB)
+
     if (file.size > 5 * 1024 * 1024) {
       alert('A imagem deve ter no máximo 5MB');
       avatarInput.value = '';
@@ -111,13 +111,13 @@ avatarInput.addEventListener('change', (e) => {
   }
 });
 
-// Alternar para modo de edição
+
 editProfileBtn.addEventListener('click', () => {
   viewMode.style.display = 'none';
   editMode.style.display = 'block';
 });
 
-// Cancelar edição
+
 cancelEditBtn.addEventListener('click', () => {
   editMode.style.display = 'none';
   viewMode.style.display = 'block';
@@ -127,7 +127,7 @@ cancelEditBtn.addEventListener('click', () => {
   }
 });
 
-// Salvar alterações
+
 editForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -140,16 +140,16 @@ editForm.addEventListener('submit', async (e) => {
   try {
     let avatarUrl = currentUser.avatar_url;
 
-    // Upload do avatar se foi selecionado
+
     if (selectedAvatarFile) {
-      // Deletar avatar antigo se existir
+
       if (currentUser.avatar_url) {
         await supabase.storage
           .from('userProfiles')
           .remove([currentUser.avatar_url]);
       }
 
-      // Upload do novo avatar
+
       const fileExt = selectedAvatarFile.name.split('.').pop();
       const fileName = `public/${currentUser.id}-${Date.now()}.${fileExt}`;
       
@@ -162,7 +162,7 @@ editForm.addEventListener('submit', async (e) => {
       avatarUrl = fileName;
     }
 
-    // Atualizar perfil
+
     const { error: updateError } = await supabase
       .from('profiles')
       .update({
@@ -177,10 +177,10 @@ editForm.addEventListener('submit', async (e) => {
 
     alert('Perfil atualizado com sucesso!');
     
-    // Recarregar perfil
+
     await loadUserProfile();
     
-    // Voltar ao modo visualização
+
     editMode.style.display = 'none';
     viewMode.style.display = 'block';
     selectedAvatarFile = null;
@@ -194,5 +194,5 @@ editForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Inicializar
+
 loadUserProfile();

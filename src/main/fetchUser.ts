@@ -22,7 +22,6 @@ async function loadUserData() {
         return;
     }
 
-    // Pegar dados do perfil na tabela "profiles"
     const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('*')
@@ -34,7 +33,6 @@ async function loadUserData() {
         return;
     }
 
-    // Preencher elementos no frontend
     if (userName) userName.innerText = profile.username || '';
     if (userFullName) userFullName.innerText = profile.name || '';
     if (userEmail) userEmail.innerText = profile.email || '';
@@ -42,7 +40,6 @@ async function loadUserData() {
     if (userBio) userBio.innerText = profile.bio || '';
 }
 
-// Chama a função para carregar os dados quando o DOM estiver pronto
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         loadUserData().catch(err => console.error('Erro ao carregar dados do usuário:', err));

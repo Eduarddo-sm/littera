@@ -103,7 +103,6 @@ function setupSearchHandlers() {
   const searchBtn = document.querySelector('.top-nav .btn');
 
   if (input) {
-    // Search on Enter
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         const q = input.value.trim();

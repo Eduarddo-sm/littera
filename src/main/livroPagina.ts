@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const user = await fetchUserProfile(id);
   const propostaStatus = await fetchPropostaStatus(id);
   
-  console.log('Proposta Status final:', propostaStatus); // Debug
+  console.log('Proposta Status final:', propostaStatus);
   
   renderBookInfo(livro);
   renderUserProfile(user, propostaStatus);
