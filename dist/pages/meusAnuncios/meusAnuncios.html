@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  <script type="module" crossorigin src="../../assets/meusAnuncios-Chbl4k3B.js"></script>
+  <script type="module" crossorigin src="../../assets/meusAnuncios-DgqbHFvt.js"></script>
   <link rel="modulepreload" crossorigin href="../../assets/supabase-BafKp-QD.js">
   <link rel="stylesheet" crossorigin href="../../assets/supabase-N1HkhQ76.css">
-  <link rel="stylesheet" crossorigin href="../../assets/meusAnuncios-c-wrORR9.css">
+  <link rel="stylesheet" crossorigin href="../../assets/meusAnuncios-CoT7HPhP.css">
 </head>
 <body>
     <header class="main-header">
@@ -18,15 +18,13 @@
       </div>
     </header>
     <main class="main-container">
-      <!-- Coluna Esquerda: Propostas Recebidas -->
       <section class="propostas-section">
         <h2>Propostas Recebidas</h2>
         <div id="propostas-list" class="propostas-list">
-          <!-- Propostas serão renderizadas aqui -->
         </div>
       </section>
 
-      <!-- Coluna Direita: Cadastrar Livro -->
+
       <section class="form-section">
         <h2>Cadastrar Livro</h2>
         <form id="form-cadastrar-livro" enctype="multipart/form-data">
@@ -51,21 +49,22 @@
             <textarea name="sobre" id="sobre" required></textarea>
           </div>
           <div class="form-group">
-            <label for="imagem">Imagem do Livro:</label>
-            <input type="file" id="imagem" name="imagem" accept="image/*" required />
+            <label for="imagem">Imagens do Livro (até 5):</label>
+            <input type="file" id="imagem" name="imagem" accept="image/*" multiple required />
+            <small style="color: #6b7280; margin-top: 4px;">Selecione de 1 a 5 imagens</small>
+            <div id="image-preview" class="image-preview"></div>
           </div>
           <button type="submit">Cadastrar</button>
         </form>
       </section>
     </main>
 
-    <!-- Modal para detalhes da proposta -->
+
     <div id="proposta-modal" class="modal">
       <div class="modal-content">
         <span class="close-modal">&times;</span>
         <h2>Detalhes da Proposta</h2>
         <div id="modal-body">
-          <!-- Conteúdo dinâmico -->
         </div>
       </div>
     </div>
