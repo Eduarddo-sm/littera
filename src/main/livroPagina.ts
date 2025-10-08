@@ -89,12 +89,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!id) return;
   const livro = await fetchBookById(id);
   const user = await fetchUserProfile(id);
+  
   renderBookInfo(livro);
   renderUserProfile(user);
   const btnProposta = document.getElementById('btn-proposta');
   if (btnProposta) {
     btnProposta.addEventListener('click', () => {
-      alert('Proposta enviada!');
+      btnProposta
     });
   }
 });

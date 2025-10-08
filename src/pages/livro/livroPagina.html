@@ -43,8 +43,28 @@
                 <button id="btn-proposta">Enviar proposta</button>
             </div>
         </section>
+        <div id="proposta-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="close-modal">&times;</span>
+                <h2>Enviar Proposta</h2>
+                <form id="proposta-form">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                    
+                    <label for="valor_oferecido">Valor Oferecido (R$):</label>
+                    <input type="number" id="valor_oferecido" name="valor_oferecido" step="0.01" min="0" required>
+                    
+                    <label for="imagem">Imagem (opcional):</label>
+                    <input type="file" id="imagem" name="imagem" accept="image/*">
+                    
+                    <button type="submit">Enviar Proposta</button>
+                </form>
+            </div>
+        </div>
+
     </main>
     <script type="module" src="../../main/livroPagina.ts"></script>
+    <script type="module" src="../../main/novaProposta.ts"></script>
 </body>
 
 </html>

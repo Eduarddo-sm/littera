@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livro - Littera</title>
-  <script type="module" crossorigin src="../../assets/livroPagina-BsADZGpW.js"></script>
-  <link rel="modulepreload" crossorigin href="../../assets/supabase-BDK56hxo.js">
-  <link rel="modulepreload" crossorigin href="../../assets/auth-BpUqCTfN.js">
-  <link rel="modulepreload" crossorigin href="../../assets/fetchUser-DolLhO-D.js">
+  <script type="module" crossorigin src="../../assets/livroPagina-aFEhPSxe.js"></script>
+  <link rel="modulepreload" crossorigin href="../../assets/supabase-BafKp-QD.js">
   <link rel="stylesheet" crossorigin href="../../assets/supabase-N1HkhQ76.css">
-  <link rel="stylesheet" crossorigin href="../../assets/livroPagina-CIIrQL2J.css">
+  <link rel="stylesheet" crossorigin href="../../assets/livroPagina-ZiSmV89R.css">
 </head>
 
 <body>
@@ -25,8 +23,9 @@
         <section id="livro-info" class="livro-section">
             <div class="imagens-contaier">
                 <div class="anunciador">
-                    <a href="#">
-                        
+                    <a href="#" id="anunciador-link">
+                        <img src="" alt="">
+                        <p></p>
                     </a>
                 </div>
                 <div class="livro-imagens" id="livro-imagens"></div>
@@ -46,6 +45,25 @@
                 <button id="btn-proposta">Enviar proposta</button>
             </div>
         </section>
+        <div id="proposta-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="close-modal">&times;</span>
+                <h2>Enviar Proposta</h2>
+                <form id="proposta-form">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                    
+                    <label for="valor_oferecido">Valor Oferecido (R$):</label>
+                    <input type="number" id="valor_oferecido" name="valor_oferecido" step="0.01" min="0" required>
+                    
+                    <label for="imagem">Imagem (opcional):</label>
+                    <input type="file" id="imagem" name="imagem" accept="image/*">
+                    
+                    <button type="submit">Enviar Proposta</button>
+                </form>
+            </div>
+        </div>
+
     </main>
 </body>
 
