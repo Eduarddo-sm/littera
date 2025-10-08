@@ -1,16 +1,25 @@
 
 import { supabase } from './supabase';
 
-async function fetchBooks() {
-  const { data, error } = await supabase
-    .from('anuncios')
-    .select('id, titulo, sobre, imagens');
+async function fetchBooks(query?: string) {
+  try {
+    let builder = supabase.from('anuncios').select('id, titulo, sobre, imagens');
 
-  if (error) {
-    console.error('Erro ao buscar livros:', error);
+    if (query && query.trim() !== '') {
+      const q = query.trim();
+      builder = builder.ilike('titulo', `%${q}%`);
+    }
+
+    const { data, error } = await builder;
+    if (error) {
+      console.error('Erro ao buscar livros:', error);
+      return [];
+    }
+    return data || [];
+  } catch (err) {
+    console.error('Erro inesperado ao buscar livros:', err);
     return [];
   }
-  return data || [];
 }
 
 type Livro = {
@@ -50,14 +59,79 @@ function createBookCard(livro: Livro) {
   return card;
 }
 
-async function renderBooks() {
-  const books = await fetchBooks();
+function showNoResults(container: HTMLElement, query?: string) {
+  container.innerHTML = '';
+  const msg = document.createElement('div');
+  msg.className = 'tooltip-box';
+  msg.textContent = query ? `Nenhum resultado encontrado para "${query}".` : 'Nenhum anúncio encontrado.';
+  container.appendChild(msg);
+}
+
+async function renderBooks(query?: string) {
+  const books = await fetchBooks(query);
   const container = document.getElementById('cards-grid');
   if (!container) return;
   container.innerHTML = '';
+
+  if (!books || (Array.isArray(books) && books.length === 0)) {
+    showNoResults(container, query);
+    return;
+  }
+
   (books as Livro[]).forEach(livro => {
     container.appendChild(createBookCard(livro));
   });
 }
 
-document.addEventListener('DOMContentLoaded', renderBooks);
+function setupSearchHandlers() {
+  const input = document.getElementById('popup-input') as HTMLInputElement | null;
+  const searchBtn = document.querySelector('.top-nav .btn');
+
+  if (input) {
+    // Search on Enter
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const q = input.value.trim();
+        renderBooks(q);
+      }
+    });
+
+
+    const debounce = <F extends (...args: any[]) => void>(fn: F, wait = 300) => {
+      let timer: number | undefined;
+      return (...args: Parameters<F>) => {
+        if (timer) window.clearTimeout(timer);
+        timer = window.setTimeout(() => fn(...args), wait) as unknown as number;
+      };
+    };
+
+    const onInput = debounce(() => {
+      const q = input.value.trim();
+      renderBooks(q === '' ? undefined : q);
+    }, 300);
+
+    input.addEventListener('input', onInput);
+  }
+
+  if (searchBtn) {
+   
+    searchBtn.addEventListener('click', (e) => {
+
+      e.preventDefault();
+      if (input) {
+        input.focus();
+        const q = input.value.trim();
+        if (q !== '') {
+ 
+          setTimeout(() => renderBooks(q), 100);
+        }
+      }
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  renderBooks();
+  setupSearchHandlers();
+});
