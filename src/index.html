@@ -4,29 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Littera — Main</title>
-  <link rel="stylesheet" href="pages/reset.css" />
-  <link rel="stylesheet" href="styles/styles.css" />
-  <link rel="shortcut icon" href="./images/logo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="pages/reset.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="shortcut icon" href="./images/logo.webp" type="image/x-icon">
   </head>
   <body>
     <header class="main-header">
       <div class="header-inner">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
         <div class="logo-header">
-           <a href="../../index.html"><img src="./images/logo-main.webp" alt="Littera logo" /></a>
+          <a href="../../index.html"><img src="./images/logo-main.webp" alt="Littera logo" /></a>
         </div>
+        
         <div id="popup-search-container" class="popup-search-container">
-              <input type="text" name="" id="popup-input" class="popup-input" placeholder="Escreva um livro..." />
-            </div>
+          <input type="text" name="" id="popup-input" class="popup-input" placeholder="Escreva um livro..." />
+        </div>
+        
         <nav class="top-nav">
-           <a href="#popup-search-container" class="btn">
+          <a href="#popup-search-container" class="btn">
             <img src="images/lupa.webp" alt="lupa" />
           </a>
         </nav>
       </div>
     </header>
 
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
     <div class="main-layout">
-      <aside class="sidebar">
+      <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebar-close" style="display: none;">&times;</button>
         <ul>
           <li>
             <details class="caixa-detalhes">
@@ -59,5 +70,6 @@
     <script type="module" src="./main/fetchBooks.ts"></script>
     <script type="module" src="./main/logout.ts"></script>
     <script type="module" src="./main/login.ts"></script>
+    <script type="module" src="./main/menuMobile.ts"></script>
   </body>
 </html>
