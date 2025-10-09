@@ -12,6 +12,7 @@ header .logo-left img {
 
 .main-layout {
   display: flex;
+  flex-wrap: wrap;
   min-height: 100%;
   background: #f9fafb;
   justify-content: space-around;
