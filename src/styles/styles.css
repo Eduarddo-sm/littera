@@ -14,6 +14,17 @@
   gap: 10px;
   justify-content: space-between;
   padding: 14px 20px;
+  position: relative;
+}
+
+.logo-header {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.logo-header.hidden {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
 }
 
 .logo-header img {
@@ -21,24 +32,49 @@
 }
 
 .popup-search-container {
-  width: 70%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
   display: flex;
+  padding: 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.popup-search-container.active {
+  width: 60%;
+  opacity: 1;
+  visibility: visible;
   padding: 10px;
 }
 
-.popup-search-container input{
+.popup-search-container input {
   width: 100%;
   border: none;
   border-bottom: 2px solid #020202;
   outline: none;
   font-size: 16px;
   padding: 8px 4px;
+  background: transparent;
 }
 
 .top-nav {
   display: flex;
   gap: 18px;
   align-items: center;
+  z-index: 10;
+}
+
+.btn {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
 }
 
 .btn img {
@@ -46,34 +82,26 @@
   cursor: pointer;
 }
 
-.menu-toggle {
+.search-icon {
+  display: block;
+}
+
+.close-search {
   display: none;
-  flex-direction: column;
-  gap: 5px;
   cursor: pointer;
-  padding: 8px;
-  background: none;
-  border: none;
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
 }
 
-.menu-toggle span {
-  width: 25px;
-  height: 3px;
-  background: #333;
-  border-radius: 2px;
-  transition: all 0.3s ease;
+.close-search:hover {
+  color: #666;
 }
 
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+.close-search.active {
+  display: block;
 }
 
 .sidebar-overlay {
@@ -292,6 +320,39 @@
   color: #97a1a8;
 }
 
+/* Menu Hambúrguer */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
+  z-index: 10;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Responsividade para Tablets */
 @media (max-width: 1024px) {
   .cards-grid {
@@ -323,12 +384,12 @@
     width: 100px;
   }
 
-  .popup-search-container {
-    display: none;
+  .popup-search-container.active {
+    width: 70%;
   }
 
   .menu-toggle {
-    display: flex;
+    display: flex; 
   }
 
   .sidebar {
@@ -351,7 +412,7 @@
   }
 
   .sidebar-close {
-    display: block;
+    display: none;
     position: absolute;
     top: 16px;
     right: 16px;
@@ -363,6 +424,10 @@
     width: 32px;
     height: 32px;
     line-height: 1;
+  }
+
+  .sidebar.active .sidebar-close {
+    display: block;
   }
 
   .main-layout {
@@ -387,7 +452,6 @@
 
   .card-thumb {
     height: 180px;
-    padding: 0 10%;
   }
 
   .card h3 {
@@ -410,6 +474,10 @@
 }
 
 @media (max-width: 480px) {
+  .popup-search-container.active {
+    width: 80%;
+  }
+
   .cards-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -424,7 +492,6 @@
 
   .card-thumb {
     height: 240px;
-    padding: 0 80px;
   }
 
   .card h3 {
