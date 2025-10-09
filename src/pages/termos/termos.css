@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.main-header {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 16px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-header img {
+    width: 120px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.termos-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 48px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #111827;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.data-vigencia {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.intro {
+    background: #f9fafb;
+    padding: 20px 24px;
+    border-left: 4px solid #4f46e5;
+    border-radius: 6px;
+    margin-bottom: 40px;
+}
+
+.intro p {
+    font-size: 1.05rem;
+    color: #374151;
+}
+
+.termo-section {
+    margin-bottom: 36px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #111827;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.termo-section p {
+    margin-bottom: 12px;
+    color: #4b5563;
+    font-size: 1rem;
+}
+
+.termo-section ul {
+    margin-left: 24px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+}
+
+.termo-section li {
+    margin-bottom: 8px;
+    color: #4b5563;
+    line-height: 1.7;
+}
+
+.footer-termos {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 2px solid #e5e7eb;
+    text-align: center;
+}
+
+.footer-termos p {
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.btn-voltar {
+    display: inline-block;
+    padding: 12px 32px;
+    background: #4f46e5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar:hover {
+    background: #3730a3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.main-footer {
+    background: #111827;
+    color: #9ca3af;
+    text-align: center;
+    padding: 24px 20px;
+    margin-top: 40px;
+}
+
+.main-footer p {
+    font-size: 0.9rem;
+}
+
+/* Responsividade para Tablets */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 16px;
+    }
+
+    .termos-content {
+        padding: 32px 24px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .intro p {
+        font-size: 1rem;
+    }
+
+    .logo-header img {
+        width: 100px;
+    }
+}
+
+/* Responsividade para Mobile */
+@media (max-width: 480px) {
+    .container {
+        padding: 24px 12px;
+    }
+
+    .termos-content {
+        padding: 24px 16px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .data-vigencia {
+        font-size: 0.85rem;
+        margin-bottom: 24px;
+    }
+
+    .intro {
+        padding: 16px;
+        margin-bottom: 28px;
+    }
+
+    .intro p {
+        font-size: 0.95rem;
+    }
+
+    h2 {
+        font-size: 1.15rem;
+        margin-bottom: 12px;
+    }
+
+    .termo-section {
+        margin-bottom: 28px;
+    }
+
+    .termo-section p {
+        font-size: 0.95rem;
+    }
+
+    .termo-section ul {
+        margin-left: 20px;
+    }
+
+    .termo-section li {
+        font-size: 0.9rem;
+    }
+
+    .footer-termos {
+        margin-top: 36px;
+        padding-top: 24px;
+    }
+
+    .btn-voltar {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+    }
+
+    .logo-header img {
+        width: 90px;
+    }
+}
+
+/* Mobile muito pequeno */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .termos-content {
+        padding: 20px 12px;
+    }
+
+    h2 {
+        font-size: 1.05rem;
+    }
+
+    .intro p,
+    .termo-section p,
+    .termo-section li {
+        font-size: 0.9rem;
+    }
+}
