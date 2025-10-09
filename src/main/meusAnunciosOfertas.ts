@@ -48,7 +48,6 @@ async function fetchMeusAnuncios(): Promise<Anuncio[]> {
       return [];
     }
 
-    console.log('Anúncios encontrados:', data);
     return data || [];
   } catch (err) {
     console.error('Erro inesperado ao buscar anúncios:', err);

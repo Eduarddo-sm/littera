@@ -34,11 +34,6 @@ async function fetchPropostaStatus(anuncioId: string) {
       return null;
     }
 
-    console.log('Buscando proposta com:', {
-      anuncio_id: anuncioId,
-      user_id: user.id
-    });
-
 
     const { data, error } = await supabase
       .from('propostas')
@@ -48,8 +43,6 @@ async function fetchPropostaStatus(anuncioId: string) {
       .order('created_at', { ascending: false })
       .limit(1);
 
-    console.log('Resultado da busca:', { data, error });
-
     if (error) {
       console.error('Erro ao buscar status da proposta:', error);
       return null;
@@ -57,11 +50,8 @@ async function fetchPropostaStatus(anuncioId: string) {
 
 
     if (!data || data.length === 0) {
-      console.log('Nenhuma proposta encontrada para este usuário');
       return null;
     }
-
-    console.log('Proposta encontrada:', data[0]);
     
 
     const proposta = data[0];
@@ -206,7 +196,6 @@ function setupImageNavigation(container: HTMLElement, imagens: string[], titulo:
 
 document.addEventListener('DOMContentLoaded', async () => {
   const id = getBookIdFromUrl();
-  console.log('ID do anúncio na URL:', id);
   
   if (!id) return;
   
@@ -214,8 +203,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const user = await fetchUserProfile(id);
   const propostaStatus = await fetchPropostaStatus(id);
   
-  console.log('Proposta Status final:', propostaStatus);
-  console.log('Status do livro:', livro?.status);
   
   renderBookInfo(livro);
   renderUserProfile(user, propostaStatus);
