@@ -4,33 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Littera — Main</title>
-  <link rel="shortcut icon" href="./assets/logo-DusRbi12.webp" type="image/x-icon">
-    <script type="module" crossorigin src="./assets/main-B8WgkyWH.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/supabase-DontodQT.js">
-    <link rel="modulepreload" crossorigin href="./assets/auth-DHS0uDGa.js">
-    <link rel="modulepreload" crossorigin href="./assets/login-wwfB6Gfa.js">
-    <link rel="stylesheet" crossorigin href="./assets/supabase-N1HkhQ76.css">
-    <link rel="stylesheet" crossorigin href="./assets/main-DXBRvBj4.css">
+    <link rel="shortcut icon" href="./assets/logo-white-B07xJ1mw.svg" type="image/x-icon">
+    <script type="module" crossorigin src="./assets/main-C_1sWylR.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/supabase-B9cvm4hE.js">
+    <link rel="modulepreload" crossorigin href="./assets/auth-DL7f-0Iv.js">
+    <link rel="modulepreload" crossorigin href="./assets/login-B5N9kwgG.js">
+    <link rel="stylesheet" crossorigin href="./assets/main-jrw5KTLg.css">
+    <link rel="stylesheet" crossorigin href="./assets/reset-N1HkhQ76.css">
   </head>
   <body>
     <header class="main-header">
       <div class="header-inner">
-        <div class="logo-header">
-           <a href="../../index.html"><img src="./assets/logo-main-yTijB8_R.webp" alt="Littera logo" /></a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <div class="logo-header" id="logo-header">
+          <a href="./index.html"><img src="./assets/logo-main-yTijB8_R.webp" alt="Littera logo" /></a>
         </div>
+        
         <div id="popup-search-container" class="popup-search-container">
-              <input type="text" name="" id="popup-input" class="popup-input" placeholder="Escreva um livro..." />
-            </div>
+          <input type="text" name="" id="popup-input" class="popup-input" placeholder="Pesquisar livros..." />
+        </div>
+        
         <nav class="top-nav">
-           <a href="#popup-search-container" class="btn">
-            <img src="data:image/webp;base64,UklGRioDAABXRUJQVlA4WAoAAAAQAAAALwAALwAAQUxQSNYCAAANkETb2rE3N82/Gtu2zVH5pW6jmW3b5sysbdv9/9q2bdt+P70pxhHBwJGkKM0N6o4wfAL8aZA/4+NgrIq39y8ekx75DtpkmhnJUaBq7OjDGC3ovUeFTtMYQdnRSZurn4snrF6MFoXE3OqlIpF0a7ICvFkvO3nzJTStPJiJagB0e5/kfRWD0kLWlx40rGLreHnjlFQWWGoLIDMg8oOIPqt8al7EL+b9wragegUgMCpSuNtNnnsYLiz/S9uWRQZAIJMv+DXyxtkEUdu5P2+mK5D1cDk/2iTQo3iR+387faYBMLnyGS/NAD7+XhWb8xcqQCe7jtcOxB4tFPbZt70WSN5wnw05KBJ1EY3fWkOtoZDUy0U+AkADlT8/t5cCUQu5pvcjblpFZ/8Fwaow1z/KgQGwnvK6vNs1ARgp4+ADQEZ7v6QM4MutHACcpILI8gQcLnEwAnCDCiLLCjB6wEEVwGtaXmkAam8wwEnuB4e3qoA6baNB5LFEEEsZAdbXKbEGcI/LJQfA4xQlHgCucDnqCzBSSgIAHOI3wUTZe3FwT24Yv5WOGJlCLXAhFeQi3H3I5fuCaKC07QsFCvkA+vl09CYpwDaojYJCcnHmcSAntDkRqN+yXzRDyNNT+JVU5+hBYVHebZGYt5FfmcPP85oewGBm+m1xZTKAH/FCYpY+yQRcZ+bvE7PaTt5bLSwnLyAQMFi4vfWzAIOLAlgBApWXCPE1MioQUKgNbV/wjs8eEQUcBZLZ6wTzh0gmixi6NHiX9OSNl9C08mJ+u4m8sTpQQrJwN/9hrz75mQmMp5Umn547iVCezc6CLyyvykpW4NdC7DFlLrBkndj8omZDUrQZF+LVfuIm3iwc8X7vAgPGx8FEVe7NvSuHZMTaojOP6Y9Kj1269/YHRw5PXj1PAsmcTfMhPglv6op5EsjP2P5/yatnSyA/fc0AIBTnl/EHOv86sgHNy9t/NAFWUDggLgAAAJADAJ0BKjAAMAA+nU6iTKWkIyIjiACwE4lpAAAU4+XdDIKo+AAA/vtlAAAAAAA=" alt="lupa" />
+          <a class="btn search-icon" id="search-icon">
+            <img src="data:image/webp;base64,UklGRioDAABXRUJQVlA4WAoAAAAQAAAALwAALwAAQUxQSNYCAAANkETb2rE3N82/Gtu2zVH5pW6jmW3b5sysbdv9/9q2bdt+P70pxhHBwJGkKM0N6o4wfAL8aZA/4+NgrIq39y8ekx75DtpkmhnJUaBq7OjDGC3ovUeFTtMYQdnRSZurn4snrF6MFoXE3OqlIpF0a7ICvFkvO3nzJTStPJiJagB0e5/kfRWD0kLWlx40rGLreHnjlFQWWGoLIDMg8oOIPqt8al7EL+b9wragegUgMCpSuNtNnnsYLiz/S9uWRQZAIJMv+DXyxtkEUdu5P2+mK5D1cDk/2iTQo3iR+387faYBMLnyGS/NAD7+XhWb8xcqQCe7jtcOxB4tFPbZt70WSN5wnw05KBJ1EY3fWkOtoZDUy0U+AkADlT8/t5cCUQu5pvcjblpFZ/8Fwaow1z/KgQGwnvK6vNs1ARgp4+ADQEZ7v6QM4MutHACcpILI8gQcLnEwAnCDCiLLCjB6wEEVwGtaXmkAam8wwEnuB4e3qoA6baNB5LFEEEsZAdbXKbEGcI/LJQfA4xQlHgCucDnqCzBSSgIAHOI3wUTZe3FwT24Yv5WOGJlCLXAhFeQi3H3I5fuCaKC07QsFCvkA+vl09CYpwDaojYJCcnHmcSAntDkRqN+yXzRDyNNT+JVU5+hBYVHebZGYt5FfmcPP85oewGBm+m1xZTKAH/FCYpY+yQRcZ+bvE7PaTt5bLSwnLyAQMFi4vfWzAIOLAlgBApWXCPE1MioQUKgNbV/wjs8eEQUcBZLZ6wTzh0gmixi6NHiX9OSNl9C08mJ+u4m8sTpQQrJwN/9hrz75mQmMp5Umn547iVCezc6CLyyvykpW4NdC7DFlLrBkndj8omZDUrQZF+LVfuIm3iwc8X7vAgPGx8FEVe7NvSuHZMTaojOP6Y9Kj1269/YHRw5PXj1PAsmcTfMhPglv6op5EsjP2P5/yatnSyA/fc0AIBTnl/EHOv86sgHNy9t/NAFWUDggLgAAAJADAJ0BKjAAMAA+nU6iTKWkIyIjiACwE4lpAAAU4+XdDIKo+AAA/vtlAAAAAAA=" alt="Pesquisar" />
           </a>
+          <span class="close-search" id="close-search">&times;</span>
         </nav>
       </div>
     </header>
 
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
     <div class="main-layout">
-      <aside class="sidebar">
+      <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebar-close" style="display: none;">&times;</button>
         <ul>
           <li>
             <details class="caixa-detalhes">
@@ -58,6 +70,6 @@
         </section>
       </main>
     </div>
-
+
   </body>
 </html>
