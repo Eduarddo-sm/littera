@@ -3,10 +3,17 @@ import { supabase } from './supabase';
 
 async function fetchBooks(query?: string) {
   try {
+
+    const { data: { user } } = await supabase.auth.getUser();
+    
     let builder = supabase
       .from('anuncios')
-      .select('id, titulo, autora, paginas, editora, sobre, imagens, status')
-      .or('status.eq.EM ABERTO,status.is.null,status.eq.FECHADO'); 
+      .select('id, titulo, autora, paginas, editora, sobre, imagens, status, user_id')
+      .or('status.eq.EM ABERTO,status.is.null,status.eq.FECHADO');
+
+    if (user) {
+      builder = builder.neq('user_id', user.id);
+    }
 
     if (query && query.trim() !== '') {
       const q = query.trim();
