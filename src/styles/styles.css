@@ -474,8 +474,10 @@
 }
 
 @media (max-width: 480px) {
+
+
   .popup-search-container.active {
-    width: 80%;
+    width: 70%;
   }
 
   .cards-grid {

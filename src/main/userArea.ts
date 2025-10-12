@@ -11,6 +11,7 @@ interface UserProfile {
   email: string;
   phone: string;
   avatar_url?: string;
+  bio?: string;
 }
 
 let currentUser: UserProfile | null = null;
@@ -24,6 +25,7 @@ const cancelEditBtn = document.getElementById('cancel-edit-btn') as HTMLButtonEl
 const editForm = document.getElementById('edit-profile-form') as HTMLFormElement;
 const avatarInput = document.getElementById('edit-avatar') as HTMLInputElement;
 const avatarPreview = document.getElementById('avatar-preview') as HTMLElement;
+const bioInput = document.getElementById('edit-bio') as HTMLTextAreaElement;
 
 
 async function loadUserProfile() {
@@ -169,7 +171,8 @@ editForm.addEventListener('submit', async (e) => {
         username: (document.getElementById('edit-username') as HTMLInputElement).value,
         name: (document.getElementById('edit-fullname') as HTMLInputElement).value,
         phone: (document.getElementById('edit-phone') as HTMLInputElement).value,
-        avatar_url: avatarUrl
+        avatar_url: avatarUrl,
+        bio: bioInput.value
       })
       .eq('id', currentUser.id);
 
@@ -191,6 +194,7 @@ editForm.addEventListener('submit', async (e) => {
   } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Salvar Alterações';
+    window.location.reload()
   }
 });
 
