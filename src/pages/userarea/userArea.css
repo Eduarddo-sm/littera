@@ -238,3 +238,7 @@ footer .delete-account {
 .btn-cancel:hover {
   background: #e5e7eb;
 }
+
+#delete-account {
+  display: none;
+}
