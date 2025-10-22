@@ -115,6 +115,7 @@ input:focus {
     text-decoration: underline;
 }
 
+
 /* Responsividade para Tablets */
 @media (max-width: 768px) {
     .container {

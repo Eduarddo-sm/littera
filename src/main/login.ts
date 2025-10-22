@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { showPopup } from './popup';
 
 async function signIn(email: string, password: string) {
     try {
@@ -49,8 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const ok = await signIn(email, password);
         if (ok) {
-            alert('Login realizado com sucesso!');
-            window.location.href = '/index.html';
+            showPopup('Login realizado com sucesso!', 2000, 2);
+            setTimeout(() => {
+                window.location.href = '/index.html';
+            }, 2000);
         }
     });
 });
