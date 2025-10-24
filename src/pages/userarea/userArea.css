@@ -11,7 +11,7 @@ header .logo-left img {
 
 
 .main-layout {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   min-height: 100%;
   background: #f9fafb;
@@ -102,7 +102,7 @@ footer .delete-account {
 .edit-profile-btn {
   margin-top: 16px;
   padding: 8px 24px;
-  background: #4f46e5;
+  background: #515151;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -112,7 +112,7 @@ footer .delete-account {
 }
 
 .edit-profile-btn:hover {
-  background: #3730a3;
+  background: #2c2c2d;
 }
 
 .user-edit {
@@ -217,12 +217,12 @@ footer .delete-account {
 }
 
 .btn-save {
-  background: #4f46e5;
+  background: #515151;
   color: #fff;
 }
 
 .btn-save:hover {
-  background: #3730a3;
+  background: #323234;
 }
 
 .btn-save:disabled {

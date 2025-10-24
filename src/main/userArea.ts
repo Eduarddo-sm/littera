@@ -66,6 +66,7 @@ function displayUserProfile(profile: UserProfile) {
   userFullnameEl.textContent = profile.name || 'Nome não informado';
   userEmailEl.textContent = profile.email || 'Email não informado';
   userPhoneEl.textContent = profile.phone || 'Telefone não informado';
+  document.getElementById('main')!.style.display= 'flex';
   
   
   if (profile.avatar_url) {

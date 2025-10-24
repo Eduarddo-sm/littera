@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (livro.status === 'FECHADO') {
       btnProposta.disabled = true;
       btnProposta.textContent = 'Anúncio Fechado';
-      btnProposta.style.background = '#9ca3af';
+      btnProposta.style.background = '#323232';
       btnProposta.style.cursor = 'not-allowed';
     }
   }
