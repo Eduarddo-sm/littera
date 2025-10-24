@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { showPopup } from './popup';
 
 type Proposta = {
   id: string;
@@ -189,14 +190,14 @@ async function cancelarProposta(propostaId: string) {
 
     if (error) {
       console.error('Erro ao cancelar proposta:', error);
-      alert('Erro ao cancelar proposta. Tente novamente.');
+      showPopup('Erro ao cancelar proposta. Tente novamente.', 3000, 0);
       return false;
     }
 
     return true;
   } catch (err) {
     console.error('Erro inesperado:', err);
-    alert('Erro ao cancelar proposta. Tente novamente.');
+    showPopup('Erro ao cancelar proposta. Tente novamente.', 3000, 0);
     return false;
   }
 }

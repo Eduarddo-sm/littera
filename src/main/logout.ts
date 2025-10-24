@@ -1,5 +1,6 @@
 import { supabase } from "./supabase";
 import { authGuard } from "./auth";
+import { showPopup } from "./popup";
 
 const signOutBtn = document.getElementById('signout-btn') as HTMLAnchorElement | null;
 const userArea = document.getElementById('userArea') as HTMLAnchorElement | null;
@@ -40,7 +41,7 @@ if (signOutBtn) {
             }
         } catch (err) {
             console.error('Erro no fluxo de signOut:', err);
-            alert('Erro ao sair. Veja o console para detalhes.');
+            showPopup('Erro ao sair. Veja o console para detalhes.', 3000, 0);
         }
     });
 }

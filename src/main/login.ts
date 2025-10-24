@@ -6,7 +6,8 @@ async function signIn(email: string, password: string) {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) {
             console.error('Login error:', error);
-            alert(`Erro no login: ${error.message}`);
+            showPopup(`Erro no login: ${error.message}`, 3000, 0);
+
             return false;
         }
 
@@ -15,12 +16,12 @@ async function signIn(email: string, password: string) {
         }
 
         console.warn('Login returned no user data', data);
-        alert('Não foi possível efetuar o login. Tente novamente.');
+        showPopup('Não foi possível efetuar o login. Tente novamente.', 3000, 0);
         return false;
 
     } catch (err) {
         console.error('Unexpected signIn error', err);
-        alert('Erro inesperado ao tentar logar. Veja o console para mais detalhes.');
+        showPopup('Erro inesperado ao tentar logar. Veja o console para mais detalhes.', 3000, 0);
         return false;
     }
 }
@@ -37,15 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailEl = document.getElementById('email') as HTMLInputElement | null;
         const passwordEl = document.getElementById('password') as HTMLInputElement | null;
         if (!emailEl || !passwordEl) {
-            alert('Campos de email ou senha não encontrados na página.');
-                    return false;
+            showPopup('Campos de email ou senha não encontrados na página.', 3000, 0);
+            return false;
         }
 
         const email = emailEl.value.trim();
         const password = passwordEl.value;
 
         if (!email || !password) {
-            alert('Preencha email e senha antes de enviar.');
+            showPopup('Preencha email e senha antes de enviar.', 3000, 0);
             return;
         }
         const ok = await signIn(email, password);

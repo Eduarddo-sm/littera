@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { showPopup } from './popup';
 
 type SignUpExtra = {
   name?: string;
@@ -33,9 +34,10 @@ async function signUp(email: string, password: string, extra: SignUpExtra = {}) 
 
       if (insertError) {
         console.error('Erro ao criar perfil:', insertError);
+        showPopup('Erro ao criar perfil. Tente novamente.', 2000, 0);
         return false;
       } else {
-        console.log('Perfil criado com sucesso');
+        showPopup('Perfil criado com sucesso!', 2000, 1);
       }
 
     }
@@ -43,7 +45,7 @@ async function signUp(email: string, password: string, extra: SignUpExtra = {}) 
     return true;
   } catch (err) {
     console.error('Unexpected signUp error', err);
-    alert('Erro inesperado ao tentar cadastrar. Veja o console para mais detalhes.');
+    showPopup('Erro inesperado ao tentar cadastrar. Veja o console para mais detalhes.')
     return false;
   }
 }
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmInput = form.querySelector('input[name="confirmPassword"]') as HTMLInputElement | null;
 
     if (!emailInput || !passwordInput || !confirmInput) {
-      alert('Campos de email ou senha não encontrados no formulário.');
+      showPopup('Campos de email ou senha não encontrados no formulário.', 3000, 2)
       return;
     }
 
@@ -74,16 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = passwordInput.value;
     const confirmPassword = confirmInput.value;
 
-    if (!email) { alert('Informe um email válido.'); return; }
-    if (!password || password.length < 6) { alert('A senha deve ter ao menos 6 caracteres'); return; }
-    if (password !== confirmPassword) { alert('As senhas não conferem.'); return; }
+    if (!email) { showPopup('Informe um email válido.', 2000, 0); return; }
+    if (!password || password.length < 6) { showPopup('A senha deve ter ao menos 6 caracteres', 2000); return; }
+    if (password !== confirmPassword) { showPopup('As senhas não conferem.', 2000, 0); return; }
 
     const ok = await signUp(email, password, { name, username, phone });
     if (ok) {
-      alert('Cadastro realizado com sucesso! Por favor, verifique seu email para confirmar a conta.');
-      window.location.href = '/pages/login/login.html';
+      showPopup('Cadastro realizado com sucesso! Por favor, verifique seu email para confirmar a conta.')
+      setTimeout(() => {
+        window.location.href = '/pages/login/login.html';
+      }, 3000);
     } else {
-      alert('Não foi possível completar o cadastro. Veja o console para mais detalhes.');
+      showPopup('Não foi possível completar o cadastro. Veja o console para mais detalhes.')
     }
   });
 });

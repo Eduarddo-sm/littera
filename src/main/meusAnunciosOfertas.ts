@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { showPopup } from './popup';
 
 type Anuncio = {
   id: string;
@@ -67,14 +68,14 @@ async function toggleAnuncioStatus(anuncioId: string, currentStatus: string) {
 
     if (error) {
       console.error('Erro ao atualizar status:', error);
-      alert('Erro ao atualizar anúncio. Tente novamente.');
+      showPopup('Erro ao atualizar anúncio. Tente novamente.', 3000, 0);
       return false;
     }
 
     return true;
   } catch (err) {
     console.error('Erro inesperado:', err);
-    alert('Erro inesperado. Tente novamente.');
+    showPopup('Erro inesperado. Tente novamente.', 3000, 0);
     return false;
   }
 }
@@ -372,7 +373,7 @@ async function updatePropostaStatus(propostaId: string, newStatus: 'aceita' | 'r
 
     if (fetchError) {
       console.error('Erro ao buscar proposta:', fetchError);
-      alert('Erro ao buscar proposta. Tente novamente.');
+      showPopup('Erro ao buscar proposta. Tente novamente.', 3000, 0);
       return;
     }
 
@@ -384,7 +385,7 @@ async function updatePropostaStatus(propostaId: string, newStatus: 'aceita' | 'r
 
     if (error) {
       console.error('Erro ao atualizar status:', error);
-      alert('Erro ao atualizar proposta. Tente novamente.');
+      showPopup('Erro ao atualizar proposta. Tente novamente.', 3000, 0);
       return;
     }
 
@@ -401,10 +402,11 @@ async function updatePropostaStatus(propostaId: string, newStatus: 'aceita' | 'r
       }
     }
 
-    alert(`Proposta ${newStatus} com sucesso!${newStatus === 'aceita' ? ' O anúncio foi fechado automaticamente.' : ''}`);
+    // lert(`Proposta ${newStatus} com sucesso!${newStatus === 'aceita' ? ' O anúncio foi fechado automaticamente.' : ''}`);
+    showPopup(`Proposta ${newStatus} com sucesso!${newStatus === 'aceita' ? ' O anúncio foi fechado automaticamente.' : ''}`, 3000, 2);
   } catch (err) {
     console.error('Erro inesperado:', err);
-    alert('Erro inesperado. Tente novamente.');
+    showPopup('Erro inesperado. Tente novamente.', 3000, 0);
   }
 }
 

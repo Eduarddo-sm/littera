@@ -10,8 +10,9 @@ function createPopupStyles(position: number = 1) {
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
-    align-items: ${alignPosition[position]}};
+    align-items: ${alignPosition[position]};
     justify-content: center;
+    padding: 25px;
     opacity: 0;
     pointer-events: none;
     z-index: 1000;

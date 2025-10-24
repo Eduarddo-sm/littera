@@ -1,8 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { supabase } from './supabase';
+import { showPopup } from './popup';
+  
 
 interface UserProfile {
   id: string;
@@ -49,7 +48,7 @@ async function loadUserProfile() {
     displayUserProfile(profile);
   } catch (error) {
     console.error('Erro ao carregar perfil:', error);
-    alert('Erro ao carregar perfil do usuário');
+    showPopup('Erro ao carregar perfil do usuário', 3000, 0);
   }
 }
 
@@ -92,14 +91,14 @@ avatarInput.addEventListener('change', (e) => {
   if (file) {
 
     if (!['image/jpeg', 'image/jpg', 'image/png'].includes(file.type)) {
-      alert('Por favor, selecione uma imagem JPG ou PNG');
+      showPopup('Por favor, selecione uma imagem JPG ou PNG', 3000, 0);
       avatarInput.value = '';
       return;
     }
 
 
     if (file.size > 5 * 1024 * 1024) {
-      alert('A imagem deve ter no máximo 5MB');
+      showPopup('A imagem deve ter no máximo 5MB', 3000, 0);
       avatarInput.value = '';
       return;
     }
@@ -178,7 +177,7 @@ editForm.addEventListener('submit', async (e) => {
 
     if (updateError) throw updateError;
 
-    alert('Perfil atualizado com sucesso!');
+    showPopup('Perfil atualizado com sucesso!', 3000, 1);
     
 
     await loadUserProfile();
@@ -190,7 +189,7 @@ editForm.addEventListener('submit', async (e) => {
 
   } catch (error) {
     console.error('Erro ao salvar perfil:', error);
-    alert('Erro ao salvar alterações. Tente novamente.');
+    showPopup('Erro ao salvar alterações. Tente novamente.', 3000, 0);
   } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Salvar Alterações';

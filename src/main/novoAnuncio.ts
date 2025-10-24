@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { showPopup } from './popup';
 
 const form = document.getElementById('form-cadastrar-livro') as HTMLFormElement | null;
 
@@ -73,7 +74,7 @@ if (form) {
       if (!files) return;
       
       if (files.length > 5) {
-        alert('Você pode selecionar no máximo 5 imagens.');
+        showPopup('Você pode selecionar no máximo 5 imagens.', 3000, 0);
         imagensInput.value = '';
         selectedFiles = [];
         renderImagePreviews();
@@ -96,19 +97,19 @@ if (form) {
     const files = imagensInput.files;
     
     if (!files || files.length === 0) {
-      alert('Selecione pelo menos uma imagem.');
+      showPopup('Selecione pelo menos uma imagem.', 3000, 0);
       return;
     }
     
     if (files.length > 5) {
-      alert('Você pode enviar no máximo 5 imagens.');
+      showPopup('Você pode enviar no máximo 5 imagens.', 3000, 0);
       return;
     }
     
     try {
       const { data: userData, error: userError } = await supabase.auth.getUser();
       if (userError || !userData?.user) {
-        alert('Usuário não autenticado.');
+        showPopup('Usuário não autenticado.', 3000, 0);
         console.error('Erro de autenticação:', userError);
         return;
       }
@@ -117,7 +118,7 @@ if (form) {
       try {
         imagens = await uploadImages(files);
       } catch (uploadErr: any) {
-        alert('Erro ao fazer upload das imagens: ' + uploadErr.message);
+        showPopup('Erro ao fazer upload das imagens. Tente novamente.', 3000, 0);
         console.error('Erro upload imagens:', uploadErr);
         return;
       }
@@ -134,17 +135,17 @@ if (form) {
         },
       ]);
       if (insertError) {
-        alert('Erro ao inserir no banco: ' + insertError.message);
+        showPopup('Erro ao inserir no banco: ', 3000, 0);
         console.error('Erro insert:', insertError);
         return;
       }
       console.log('Insert data:', insertData);
-      alert('Livro cadastrado com sucesso!');
+      showPopup('Livro cadastrado com sucesso!', 3000, 1);
       form.reset();
       selectedFiles = [];
       renderImagePreviews();
     } catch (err: any) {
-      alert('Erro inesperado ao cadastrar livro: ' + err.message);
+      showPopup('Erro inesperado ao cadastrar livro: ', 3000, 0);
       console.error('Erro inesperado:', err);
     }
   });

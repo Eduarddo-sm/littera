@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { showPopup } from './popup';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -100,7 +101,7 @@ function initPropostaModal() {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
-        alert('Você precisa estar logado para enviar uma proposta');
+        showPopup('Você precisa estar logado para enviar uma proposta', 3000, 0);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar Proposta';
         return;
@@ -111,7 +112,7 @@ function initPropostaModal() {
       const anuncioId = urlParams.get('id');
 
       if (!anuncioId) {
-        alert('ID do anúncio não encontrado');
+        showPopup('ID do anúncio não encontrado', 3000, 0);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar Proposta';
         return;
@@ -125,7 +126,7 @@ function initPropostaModal() {
         .single();
 
       if (!anuncio) {
-        alert('Anúncio não encontrado');
+        showPopup('Anúncio não encontrado', 3000, 0);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar Proposta';
         return;
@@ -133,7 +134,7 @@ function initPropostaModal() {
 
    
       if (anuncio.status === 'FECHADO') {
-        alert('Este anúncio já está fechado e não aceita mais propostas.');
+        showPopup('Este anúncio já está fechado e não aceita mais propostas.', 3000, 0);
         modal.style.display = 'none';
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar Proposta';
@@ -148,7 +149,7 @@ function initPropostaModal() {
         imagemUrl = await uploadImagem(imagemInput.files[0]);
         
         if (!imagemUrl) {
-          alert('Erro ao fazer upload da imagem. Tente novamente.');
+          showPopup('Erro ao fazer upload da imagem. Tente novamente.', 3000, 0);
           submitBtn.disabled = false;
           submitBtn.textContent = 'Enviar Proposta';
           return;
@@ -169,15 +170,15 @@ function initPropostaModal() {
       const sucesso = await enviarProposta(propostaData);
 
       if (sucesso) {
-        alert('Proposta enviada com sucesso!');
+        showPopup('Proposta enviada com sucesso!', 3000, 1);
         modal.style.display = 'none';
         form.reset();
       } else {
-        alert('Erro ao enviar proposta. Tente novamente.');
+        showPopup('Erro ao enviar proposta. Tente novamente.', 3000, 0);
       }
     } catch (error) {
       console.error('Erro ao processar proposta:', error);
-      alert('Erro ao enviar proposta. Tente novamente.');
+      showPopup('Erro ao enviar proposta. Tente novamente.', 3000, 0);
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Enviar Proposta';
