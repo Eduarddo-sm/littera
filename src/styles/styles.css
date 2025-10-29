@@ -353,6 +353,15 @@
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
+footer {
+    height: 60px;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #ffffff;
+}
+
 /* Responsividade para Tablets */
 @media (max-width: 1024px) {
   .cards-grid {
