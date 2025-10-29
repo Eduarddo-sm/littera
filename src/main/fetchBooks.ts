@@ -69,6 +69,10 @@ function createBookCard(livro: Livro) {
 
   const desc = document.createElement('p');
   desc.textContent = livro.sobre;
+  const maxLength = 50;
+  if (desc.textContent.length > maxLength) {
+    desc.textContent = desc.textContent.slice(0, maxLength) + '...';
+  }     
 
   const button = document.createElement('button');
   button.className = "more"

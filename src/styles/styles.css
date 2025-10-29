@@ -494,6 +494,7 @@
 
   .card-thumb {
     height: 240px;
+    padding: 0 90px;
   }
 
   .card h3 {
