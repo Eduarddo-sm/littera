@@ -1,9 +1,3 @@
-Duzoka: criar README.md, devem estar as instruções detalhadas para um desenvolvedor conseguir executar a aplicação em seu computador pessoal
-
-Workspace: Collecting workspace information# Littera - Plataforma de Troca e Venda de Livros
-
-Uma plataforma web para anúncio, venda e troca de livros entre usuários. Desenvolvida com TypeScript, Vite e Supabase.
-
 ## Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado em sua máquina:
