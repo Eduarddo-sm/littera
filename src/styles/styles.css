@@ -239,7 +239,7 @@
   margin-bottom: 12px;
   background-size: cover;
   background-position: center;
-  padding: 0 50px;
+  padding: 0 14px;
 }
 
 .card h3 {
@@ -353,6 +353,22 @@
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
+.add-book-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  padding: 12px 20px;
+  background: #515151;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+
 footer {
     height: 60px;
     background: #000000;
@@ -363,6 +379,13 @@ footer {
 }
 
 /* Responsividade para Tablets */
+@media (min-width: 1025px) {
+   .card-thumb {
+    padding: 0 50px;
+   }
+ 
+}
+
 @media (max-width: 1024px) {
   .cards-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -376,6 +399,7 @@ footer {
 
   .card-thumb {
     height: 240px;
+ 
   }
 
   .popup-search-container {
@@ -503,7 +527,7 @@ footer {
 
   .card-thumb {
     height: 240px;
-    padding: 0 90px;
+    padding: 0 80px;
   }
 
   .card h3 {
@@ -521,5 +545,11 @@ footer {
 
   .sidebar {
     width: 85%;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-thumb {
+    padding: 0;
   }
 }
