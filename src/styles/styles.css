@@ -356,17 +356,21 @@
 .add-book-btn {
   position: fixed;
   bottom: 100px;
-  right: 20px;
-  padding: 12px 20px;
-  background: #515151;
+  right: 30px;
+  padding: 25px 30px;
+  background: #515151a7;
   color: #fff;
   border: none;
   border-radius: 50px;
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: background 0.2s ease;
+  transition: background 0.5s ease;
   z-index: 1000;
+}
+
+.add-book-btn:hover {
+  background: #323234;
 }
 
 footer {
