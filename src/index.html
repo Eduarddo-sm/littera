@@ -6,7 +6,7 @@
     <title>Littera — Main</title>
     <link rel="stylesheet" href="pages/reset.css" />
     <link rel="stylesheet" href="styles/styles.css" />
-    <link rel="shortcut icon" href="images/logo-white.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/logo.webp" type="image/x-icon">
   </head>
   <body>
     <header class="main-header">
@@ -67,7 +67,54 @@
       </main>
     </div>
 
-    <input type="button" value="+" id="add-book-btn" class="add-book-btn"/>
+
+    <button type="button" id="add-book-btn" class="add-book-btn" title="Cadastrar Livro">+</button>
+
+    <div id="add-book-modal" class="modal">
+      <div class="modal-content modal-form">
+        <span class="close-modal" id="close-add-book-modal">&times;</span>
+        <h2>Cadastrar Livro</h2>
+        <form id="form-cadastrar-livro" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="titulo">Título do Livro:</label>
+            <input type="text" id="titulo" name="titulo" required />
+          </div>
+          <div class="form-group">
+            <label for="autora">Nome da Autora:</label>
+            <input type="text" id="autora" name="autora" required />
+          </div>
+          <div class="form-group">
+            <label for="paginas">Número de Páginas:</label>
+            <input type="number" id="paginas" name="paginas" min="1" required />
+          </div>
+          <div class="form-group">
+            <label for="editora">Nome da Editora:</label>
+            <input type="text" id="editora" name="editora" required />
+          </div>
+          <div class="form-group">
+            <label for="sobre">Descrição do anúncio</label>
+            <textarea name="sobre" id="sobre" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="generos">Gêneros Literários:</label>
+            <div id="generos-container" class="generos-container">
+              <input type="text" id="genero-input" class="genero-input" placeholder="Digite um gênero e pressione Enter" />
+              <div id="generos-tags" class="generos-tags"></div>
+            </div>
+            <small style="color: #6b7280; margin-top: 4px; display: block;">
+              Exemplos: Romance, Ficção, Suspense, Terror, etc.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="imagem">Imagens do Livro (até 5):</label>
+            <input type="file" id="imagem" name="imagem" accept="image/*" multiple required />
+            <small style="color: #6b7280; margin-top: 4px; display: block;">Selecione de 1 a 5 imagens</small>
+            <div id="image-preview" class="image-preview"></div>
+          </div>
+          <button type="submit" class="btn-submit">Cadastrar</button>
+        </form>
+      </div>
+    </div>
 
     <footer>
       <div class="footer-inner">
@@ -81,5 +128,7 @@
     <script type="module" src="./main/login.ts"></script>
     <script type="module" src="./main/menuMobile.ts"></script>
     <script type="module" src="./main/searchToggle.ts"></script>
+    <script type="module" src="./main/novoAnuncio.ts"></script>
+    <script type="module" src="./main/addBookModal.ts"></script>
   </body>
 </html>
