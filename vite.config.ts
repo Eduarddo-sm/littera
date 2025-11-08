@@ -19,7 +19,7 @@ export default defineConfig({
         meusAnuncios: path.resolve(__dirname, 'src/pages/meusAnuncios/meusAnuncios.html'),
         livroPagina: path.resolve(__dirname, 'src/pages/livro/livroPagina.html'),
         minhaProposta: path.resolve(__dirname, 'src/pages/minhasPropostas/minhasPropostas.html'),
-        perfil: path.resolve(__dirname, 'src/pages/perfil/perfil.html'),
+        perfil: path.resolve(__dirname, 'src/pages/loja/perfil.html'),
       },
     },
   },

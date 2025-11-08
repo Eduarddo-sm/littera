@@ -1,4 +1,4 @@
-import{s as d,a as v}from"./popup-B9BBiTrj.js";/* empty css              */let r="todas",o=null,i=[];async function f(){try{const{data:{user:e}}=await d.auth.getUser();if(!e)return console.error("Usuário não autenticado"),[];const{data:a,error:t}=await d.from("propostas").select(`
+import{s as d,a as v}from"./popup-BbttVVEm.js";/* empty css              */let r="todas",o=null,i=[];async function f(){try{const{data:{user:e}}=await d.auth.getUser();if(!e)return console.error("Usuário não autenticado"),[];const{data:a,error:t}=await d.from("propostas").select(`
         *,
         anuncios (
           titulo,

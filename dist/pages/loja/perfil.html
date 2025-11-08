@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja</title>
+  <script type="module" crossorigin src="../../assets/perfil-BPiyBqJu.js"></script>
+  <link rel="modulepreload" crossorigin href="../../assets/popup-BbttVVEm.js">
+  <link rel="stylesheet" crossorigin href="../../assets/perfil-7VFPVD3E.css">
+  <link rel="stylesheet" crossorigin href="../../assets/reset-N1HkhQ76.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-inner">
+            <div class="logo-header" id="logo-header">
+                <a href="/index.html"><img src="../../assets/logo-main-yTijB8_R.webp" alt="Littera logo" /></a>
+            </div>
+            <nav class="header-nav">
+                <a href="/index.html">Início</a>
+                <a href="/pages/userarea/userarea.html">Meu Perfil</a>
+                <a href="/pages/meusAnuncios/meusAnuncios.html">Meus Anúncios</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="user-profile-section">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img id="user-avatar">
+                    </div>
+                    <div class="profile-info">
+                        <h1 id="user-name">Carregando...</h1>
+                        <p id="user-username">@username</p>
+                        <p id="user-bio" class="user-bio">Sem biografia</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-anuncios">0</span>
+                                <span class="stat-label">Anúncios</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-abertos">0</span>
+                                <span class="stat-label">Em Aberto</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-fechados">0</span>
+                                <span class="stat-label">Fechados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtros -->
+        <section class="filter-section">
+            <div class="filter-container">
+                <h2>Minha Loja</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                    <button class="filter-btn" data-filter="EM ABERTO">Em Aberto</button>
+                    <button class="filter-btn" data-filter="FECHADO">Fechados</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de Livros -->
+        <section class="books-section">
+            <div class="books-container">
+                <div id="loading-state" class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Carregando anúncios...</p>
+                </div>
+                <div id="empty-state" class="empty-state" style="display: none;">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    <h3>Nenhum anúncio encontrado</h3>
+                    <p>Você ainda não criou nenhum anúncio.</p>
+                </div>
+                <div id="books-grid" class="books-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Littera. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

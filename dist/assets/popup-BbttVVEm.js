@@ -70,4 +70,4 @@ ${k}`}xr();const qr={url:Js,storageKey:Gs,autoRefreshToken:!0,persistSession:!0,
 .overlay.show .popup {
     transform: scale(1);
 }
-    `,document.head.appendChild(t)}function si(n,e=3e3,t=1){Vr(t);const s=document.createElement("div");s.className="overlay";const r=document.createElement("div");r.className="popup",r.textContent=n,s.appendChild(r),document.body.appendChild(s),s.offsetWidth,s.classList.add("show"),setTimeout(()=>{s.classList.remove("show"),setTimeout(()=>{document.body.removeChild(s)},300)},e)}export{si as a,Hr as c,ti as s};
+    `,document.head.appendChild(t)}function si(n,e=3e3,t=1){Vr(t);const s=document.createElement("div");s.className="overlay";const r=document.createElement("div");r.className="popup",r.textContent=n,s.appendChild(r),document.body.appendChild(s),s.offsetWidth,s.classList.add("show"),setTimeout(()=>{s.classList.remove("show"),setTimeout(()=>{document.body.removeChild(s)},300)},e)}export{si as a,ti as s};

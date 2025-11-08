@@ -1,0 +1,1 @@
+import{s as a}from"./popup-BbttVVEm.js";async function e(){try{const{data:r}=await a.auth.getUser();r.user}catch(r){console.error("Erro ao obter usuário:",r)}}async function o(){try{const{data:r}=await a.auth.getUser();return!!r.user}catch(r){return console.error("Erro ao verificar autenticação:",r),!1}}export{e as a,o as v};
