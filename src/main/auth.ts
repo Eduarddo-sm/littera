@@ -4,7 +4,6 @@ export async function authGuard() {
     try {
         const { data } = await supabase.auth.getUser();
         if (!data.user) {
-            console.log("Usuário não autenticado. Redirecionando para a página de login.");
         }
     } catch (err) {
         console.error('Erro ao obter usuário:', err);
@@ -13,7 +12,7 @@ export async function authGuard() {
 
 export async function verifyAuth(){
     try {
-        const { data} = await supabase.auth.getUser();
+        const {data} = await supabase.auth.getUser();
         if (data.user){
             return true;
         }else{

@@ -1,14 +1,12 @@
-
 import { supabase } from './supabase';
 
 async function fetchBooks(query?: string) {
   try {
-
     const { data: { user } } = await supabase.auth.getUser();
     
     let builder = supabase
       .from('anuncios')
-      .select('id, titulo, autora, paginas, editora, sobre, imagens, status, user_id')
+      .select('id, titulo, autora, paginas, editora, sobre, imagens, status, user_id, generos')
       .or('status.eq.EM ABERTO,status.is.null,status.eq.FECHADO');
 
     if (user) {
@@ -41,6 +39,7 @@ type Livro = {
   sobre: string;
   imagens: string[];
   status?: string;
+  generos?: string[];
 };
 
 function createBookCard(livro: Livro) {
@@ -67,24 +66,36 @@ function createBookCard(livro: Livro) {
   }
   meta.textContent = parts.join(' ');
 
-  const desc = document.createElement('p');
-  desc.textContent = livro.sobre;
-  const maxLength = 50;
-  if (desc.textContent.length > maxLength) {
-    desc.textContent = desc.textContent.slice(0, maxLength) + '...';
-  }     
+
+  const generosContainer = document.createElement('div');
+  generosContainer.className = 'card-generos';
+  
+  if (livro.generos && livro.generos.length > 0) {
+  
+    livro.generos.slice(0, 3).forEach(genero => {
+      const generoTag = document.createElement('span');
+      generoTag.className = 'genero-tag';
+      generoTag.textContent = genero;
+      generosContainer.appendChild(generoTag);
+    });
+  } else {
+    const generoTag = document.createElement('span');
+    generoTag.className = 'genero-tag';
+    generoTag.textContent = 'Sem gênero';
+    generosContainer.appendChild(generoTag);
+  }
 
   const button = document.createElement('button');
-  button.className = "more"
+  button.className = "more";
   button.textContent = 'Ver mais';
-    button.addEventListener('click', () => {
-      window.location.href = `../pages/livro/livroPagina.html?id=${livro.id}`;
-    });
+  button.addEventListener('click', () => {
+    window.location.href = `/pages/livro/livroPagina.html?id=${livro.id}`;
+  });
 
   card.appendChild(thumb);
   card.appendChild(meta);
   card.appendChild(title);
-  card.appendChild(desc);
+  card.appendChild(generosContainer); 
   card.appendChild(button);
 
   return card;
@@ -126,7 +137,6 @@ function setupSearchHandlers() {
       }
     });
 
-
     const debounce = <F extends (...args: any[]) => void>(fn: F, wait = 300) => {
       let timer: number | undefined;
       return (...args: Parameters<F>) => {
@@ -144,15 +154,12 @@ function setupSearchHandlers() {
   }
 
   if (searchBtn) {
-   
     searchBtn.addEventListener('click', (e) => {
-
       e.preventDefault();
       if (input) {
         input.focus();
         const q = input.value.trim();
         if (q !== '') {
- 
           setTimeout(() => renderBooks(q), 100);
         }
       }
@@ -161,7 +168,6 @@ function setupSearchHandlers() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
   renderBooks();
   setupSearchHandlers();
 });

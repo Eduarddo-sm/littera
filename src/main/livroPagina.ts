@@ -103,7 +103,7 @@ function renderUserProfile(user: any, propostaStatus: any = null) {
   }
   
   if (anunciadorName) anunciadorName.textContent = profile?.username || 'Usuário';
-  if (anunciadorLink) anunciadorLink.href = `../perfil/perfil.html?id=${user.user_id}`;
+  if (anunciadorLink) anunciadorLink.href = `/pages/loja/perfil.html?id=${user.user_id}`;
 
 
   if (statusElement && propostaStatus) {

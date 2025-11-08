@@ -9,31 +9,37 @@ const btnAdd = document.getElementById('add-book-btn') as HTMLButtonElement | nu
 const body = document.getElementsByTagName('body')[0] as HTMLBodyElement | null;
 
 
+
+
 async function checkAuth() {
+
+    const { data, error} = await supabase.auth.getUser();
+ 
     try {
         let verify = await verifyAuth();
         if (verify) {
+            const userId = data.user!.id;
             if (signOutBtn) signOutBtn.style.display = "block";
             if (userArea) userArea.style.display = "block";
             if (areaDoCliente) areaDoCliente.innerHTML = `
-                <p><a href="./pages/meusAnuncios/meusAnuncios.html">Meus Anuncios</a></p>
-                <p><a href="./pages/minhasPropostas/minhasPropostas.html">Minhas Propostas</a></p>
-                <p><a href="./pages/perfil/perfil.html">Sua Loja</a></p>
+                <p><a href="/pages/meusAnuncios/meusAnuncios.html">Meus Anuncios</a></p>
+                <p><a href="/pages/minhasPropostas/minhasPropostas.html">Minhas Propostas</a></p>
+                <p><a href="/pages/loja/perfil.html?id=${userId}">Sua Loja</a></p>
             `
         } else {
             if (signOutBtn) signOutBtn.style.display = "none";
             if (areaDoCliente!) {
                 areaDoCliente.style.display = "none";
                 areaDoCliente.innerHTML = ``;
+                
             }
             if (btnAdd) btnAdd.style.display = "none"
             if (userArea) {
                 userArea.innerText = "Faça login";
-                userArea.href = "../pages/login/login.html";
+                userArea.href = "pages/login/login.html";
             }
         }
 
-        body!.style.display = "block"
     } catch (err) {
         console.error('Erro ao checar autenticação:', err);
     }
@@ -54,7 +60,7 @@ if (signOutBtn) {
             }
             if (userArea) {
                 userArea.innerText = "Faça login";
-                userArea.href = "../pages/login/login.html";
+                userArea.href = "/pages/login/login.html";
             }
         } catch (error) {
             console.error('Erro no fluxo de signOut:', error);
@@ -65,3 +71,4 @@ if (signOutBtn) {
 
 authGuard();
 checkAuth();
+body!.style.display = "block"
