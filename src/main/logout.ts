@@ -50,6 +50,7 @@ if (signOutBtn) {
             if (!verify) {
                 if (signOutBtn) signOutBtn.style.display = "none";
                 if (areaDoCliente) areaDoCliente.style.display = "none";
+                if (btnAdd) btnAdd.style.display = "none";
             }
             if (userArea) {
                 userArea.innerText = "Faça login";

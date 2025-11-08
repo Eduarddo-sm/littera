@@ -1,9 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from './supabase';
 import { showPopup } from './popup';
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { authGuard, verifyAuth } from "./auth";
 
 interface PropostaData {
   anuncio_id: string;
@@ -70,7 +67,12 @@ function initPropostaModal() {
   }
 
 
-  btnProposta.addEventListener('click', () => {
+  btnProposta.addEventListener('click', async () => {
+    let verify = await verifyAuth();
+    if (!verify){
+      modal.style.display = "none";
+    }
+
     modal.style.display = 'flex';
   });
 
