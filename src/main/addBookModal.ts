@@ -1,11 +1,20 @@
+import { authGuard, verifyAuth } from "./auth";
+
 const addBookBtn = document.getElementById('add-book-btn') as HTMLButtonElement;
 const addBookModal = document.getElementById('add-book-modal') as HTMLElement;
 const closeAddBookModal = document.getElementById('close-add-book-modal') as HTMLElement;
 
+
+
 if (addBookBtn) {
-  addBookBtn.addEventListener('click', () => {
-    addBookModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  addBookBtn.addEventListener('click', async () => {
+    let verify = await verifyAuth();
+    if (verify) {
+      addBookModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    } else {
+      addBookBtn.style.display = "none";
+    }
   });
 }
 

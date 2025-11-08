@@ -1,3 +1,11 @@
+html, body {
+  height: 100vh;
+}
+
+body {
+  display: none;
+}
+
 .main-header {
   background: #fff;
   border-bottom: 1px solid #eee;
