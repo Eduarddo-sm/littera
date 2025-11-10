@@ -216,4 +216,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       btnProposta.style.cursor = 'not-allowed';
     }
   }
+  
+
+  if (user!.user_id === await supabase.auth.getUser().then(res => res.data.user?.id)) {
+    const btnProposta = document.getElementById('btn-proposta') as HTMLButtonElement;
+    if (btnProposta) {
+      btnProposta.disabled = true;
+      btnProposta.textContent = 'Seu anúncio';
+      btnProposta.style.background = '#323232';
+      btnProposta.style.cursor = 'not-allowed';
+    }
+  }
+
 });
